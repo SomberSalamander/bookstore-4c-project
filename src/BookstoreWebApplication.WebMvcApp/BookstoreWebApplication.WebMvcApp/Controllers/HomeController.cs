@@ -10,6 +10,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
+            // testuju commit
             _logger = logger;
         }
 
