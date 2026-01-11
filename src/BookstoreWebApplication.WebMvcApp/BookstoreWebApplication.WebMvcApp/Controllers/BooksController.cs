@@ -1,19 +1,20 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using BookstoreWebApplication.WebMvcApp.Entities;
+using Microsoft.EntityFrameworkCore;
+using BookstoreWebApplication.WebMvcApp.Data;
 
 namespace BookstoreWebApplication.WebMvcApp.Controllers
 {
     public class BooksController : Controller
     {
-        //DbContext
+        public BooksDbContext DbContext { get; set; }
         public List<Book> Books { get; set; }
 
         public BooksController()
         {
-            // DbContext = new BooksDbContext();
-            // = DbContext.Books.ToList();
-            Books = new List<Book>();
+            DbContext = new BooksDbContext();
+            Books = DbContext.Books.ToList();
         }
 
         [HttpGet]
