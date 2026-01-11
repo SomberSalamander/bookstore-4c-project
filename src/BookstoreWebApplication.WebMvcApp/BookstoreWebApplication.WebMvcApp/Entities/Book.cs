@@ -1,53 +1,52 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookstoreWebApplication.WebMvcApp.Entities
 {
     public class Book
     {
-        public class Book
-        {
-            // PK
-            public int BookId { get; set; }
+        [Key]
+        [Column("bookId")]
+        public int BookId { get; set; }
+        
+        [Column("title")]
+        public string Title { get; set; }
+        
+        [Column("author")]
+        public int Author { get; set; }
+        
+        [Column("publisher")]
+        public int Publisher { get; set; }
+        
+        [Column("description")]
+        public string Description { get; set; }
+        
+        [Column("price")]
+        public float Price { get; set; }
+        
+        [Column("stock")]
+        public int Stock { get; set; }
+        
+        [Column("publishedAt")]
+        public DateTime PublishedAt { get; set; }
+        
+        [Column("cover")]
+        public CoverType Cover { get; set; }
+        
+        [Column("language")]
+        public string Language { get; set; }
+        
+        [Column("isbn")]
+        public string ISBN { get; set; }
+        
+        [Column("numberOfPages")]
+        public int NumberOfPages { get; set; }
+        
+        [Column("rating")]
+        // 0 - 5
+        public float Rating { get; set; }
+}
 
-            public string Title { get; set; }
-
-            public int Author { get; set; }
-
-            public int Publisher { get; set; }
-
-            public string Description { get; set; }
-
-            public float Price { get; set; }
-
-            public int Stock { get; set; }
-
-            public DateTime PublishedAt { get; set; }
-
-            // enum
-            public CoverType Cover { get; set; }
-
-            public DateTime Edition { get; set; }
-
-            public string Language { get; set; }
-
-            public string ISBN { get; set; }
-
-            // examp. "20cm x 13cm x 2cm"
-            public string Dimensions { get; set; }
-
-            // kg
-            public double Weight { get; set; }
-
-            public int NumberOfPages { get; set; }
-
-            // 0 - 5
-            public float Rating { get; set; }
-
-            // optional
-            public int? TranslatorID { get; set; }
-            public int? IllustratorID { get; set; }
-        }
-
-        public enum CoverType { Hard, Soft, Papercover }
-    }
+    public enum CoverType { Hard, Soft, Papercover }
 }
