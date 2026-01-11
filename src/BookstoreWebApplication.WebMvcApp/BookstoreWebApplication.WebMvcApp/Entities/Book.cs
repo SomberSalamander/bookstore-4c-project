@@ -22,6 +22,7 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         [Column("description")]
         public string Description { get; set; }
         
+        // CZK
         [Column("price")]
         public float Price { get; set; }
         
@@ -42,9 +43,9 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         
         [Column("numberOfPages")]
         public int NumberOfPages { get; set; }
-        
-        [Column("rating")]
+
         // 0 - 5
+        [Column("rating")]
         public float Rating { get; set; }
 
         public Book()
