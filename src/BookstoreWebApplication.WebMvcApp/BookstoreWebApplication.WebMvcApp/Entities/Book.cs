@@ -21,7 +21,8 @@ public class Book
 
         public DateTime PublishedAt { get; set; }
 
-        public CoverType Cover { get; set; } // enum
+        // enum
+        public CoverType Cover { get; set; }
 
         public DateTime Edition { get; set; }
 
@@ -45,4 +46,5 @@ public class Book
         public int? IllustratorID { get; set; }
     }
 
+    public enum CoverType { Hard, Soft, Papercover }
 }
