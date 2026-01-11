@@ -7,7 +7,7 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         public class Book
         {
             // PK
-            public int BookID { get; set; }
+            public int BookId { get; set; }
 
             public string Title { get; set; }
 
