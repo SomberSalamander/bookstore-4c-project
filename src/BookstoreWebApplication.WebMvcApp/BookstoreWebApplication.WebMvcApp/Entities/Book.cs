@@ -46,7 +46,28 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         [Column("rating")]
         // 0 - 5
         public float Rating { get; set; }
-}
+
+        public Book()
+        {
+        }
+
+        public Book(int bookId, string title, int author, int publisher, string description, float price, int stock, DateTime publishedAt, CoverType cover, string language, string isbn, int numberOfPages, float rating)
+        {
+            BookId = bookId;
+            Title = title;
+            Author = author;
+            Publisher = publisher;
+            Description = description;
+            Price = price;
+            Stock = stock;
+            PublishedAt = publishedAt;
+            Cover = cover;
+            Language = language;
+            ISBN = isbn;
+            NumberOfPages = numberOfPages;
+            Rating = rating;
+        }
+    }
 
     public enum CoverType { Hard, Soft, Papercover }
 }
