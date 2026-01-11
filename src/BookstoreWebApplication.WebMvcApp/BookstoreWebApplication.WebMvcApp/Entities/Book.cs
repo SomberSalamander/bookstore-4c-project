@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookstoreWebApplication.WebMvcApp.Entities
 {
+    [Table("books")]
     public class Book
     {
         [Key]
@@ -14,10 +15,10 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         public string Title { get; set; }
         
         [Column("author")]
-        public int Author { get; set; }
+        public string Author { get; set; }
         
         [Column("publisher")]
-        public int Publisher { get; set; }
+        public string Publisher { get; set; }
         
         [Column("description")]
         public string Description { get; set; }
@@ -33,7 +34,7 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         public DateTime PublishedAt { get; set; }
         
         [Column("cover")]
-        public CoverType Cover { get; set; }
+        public string Cover { get; set; }
         
         [Column("language")]
         public string Language { get; set; }
@@ -52,7 +53,7 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         {
         }
 
-        public Book(int bookId, string title, int author, int publisher, string description, float price, int stock, DateTime publishedAt, CoverType cover, string language, string isbn, int numberOfPages, float rating)
+        public Book(int bookId, string title, string author, string publisher, string description, float price, int stock, DateTime publishedAt, string cover, string language, string isbn, int numberOfPages, float rating)
         {
             BookId = bookId;
             Title = title;
@@ -70,5 +71,5 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         }
     }
 
-    public enum CoverType { Hard, Soft, Papercover }
+    // public enum CoverType { Hardcover, Softcover, Paperback, Dust_Jacket, Other }
 }

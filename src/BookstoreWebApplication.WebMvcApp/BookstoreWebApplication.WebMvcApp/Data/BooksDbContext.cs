@@ -10,7 +10,7 @@ namespace BookstoreWebApplication.WebMvcApp.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=mysqlstudenti.litv.sssvt.cz;database=mrkacek_db1;user=mrkacekread;password=123456");
+            optionsBuilder.UseMySQL("server=mysqlstudenti.litv.sssvt.cz;database=4c1_volsickabarbora_db1;user=volsickabarbora;password=123456");
         }
     }
 }
