@@ -31,7 +31,7 @@
                 <td>@book.PublishedAt</td>
                 <td>@book.Rating / 5</td>
                 <td>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="List">BOOKS</a>
+                    <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId">Detail</a>
                 </td>
             </tr>
         }

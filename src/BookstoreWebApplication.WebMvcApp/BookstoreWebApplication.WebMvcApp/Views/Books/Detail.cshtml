@@ -1,0 +1,10 @@
+﻿@model Book
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">by @Model.Author</h6>
+        <p class="card-text">@Model.Description</p>
+        <a asp-controller="Books" asp-action="List" class="btn btn-primary">Back to list</a>
+    </div>
+</div>
