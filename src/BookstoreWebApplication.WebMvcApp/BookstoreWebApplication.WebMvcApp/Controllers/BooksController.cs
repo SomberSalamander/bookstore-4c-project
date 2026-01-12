@@ -29,5 +29,11 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             Book book = Books.First(b => b.BookId == id);
             return View(book);
         }
+
+        [HttpGet]
+        public IActionResult Cart()
+        {
+            return View();
+        }
     }
 }

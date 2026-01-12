@@ -4,52 +4,19 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="m-2">Knihy</h1>
+<h1 class="m-3 text-center">Knihy</h1>
 
 @foreach (Book book in Model)
 {
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h3 class="card-title">@book.Title</h3>
-        <h6 class="card-subtitle mb-2 text-muted">by @book.Author</h6>
-        <div class="d-flex flex-row justify-content-between">
+        <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="text-decoration-none">
+            <h3 class="card-title text-black my-3">@book.Title</h3>
+            <h6 class="card-subtitle mb-4 text-muted">by @book.Author</h6>
+            <div class="d-flex flex-row justify-content-end">
                 <h4 class="text-success"> @book.Price CZK</h4>
-                <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="btn btn-primary">Detail</a>
-        </div>
+            </div>
+        </a>
     </div>
 </div>
 }
-
-<!-- /*
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Publisher</th>
-            <th>Price</th>
-            <th>Published at</th>
-            <th>Rating</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Book book in Model)
-        {
-            <tr>
-                <th>@book.BookId</th>
-                <td>@book.Title</td>
-                <td>@book.Author</td>
-                <td>@book.Publisher</td>
-                <td>@book.Price CZK</td>
-                <td>@book.PublishedAt</td>
-                <td>@book.Rating / 5</td>
-                <td>
-                    <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId">Detail</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-*/ -->
