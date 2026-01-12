@@ -70,6 +70,4 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
             Rating = rating;
         }
     }
-
-    // public enum CoverType { Hardcover, Softcover, Paperback, Dust_Jacket, Other }
 }

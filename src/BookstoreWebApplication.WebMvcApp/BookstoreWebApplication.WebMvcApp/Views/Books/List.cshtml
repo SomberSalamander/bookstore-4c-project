@@ -4,8 +4,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>Knihy</h1>
+<h1 class="m-2">Knihy</h1>
 
+@foreach (Book book in Model)
+{
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h3 class="card-title">@book.Title</h3>
+        <h6 class="card-subtitle mb-2 text-muted">by @book.Author</h6>
+        <div class="d-flex flex-row justify-content-between">
+                <h4 class="text-success"> @book.Price CZK</h4>
+                <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="btn btn-primary">Detail</a>
+        </div>
+    </div>
+</div>
+}
+
+<!-- /*
 <table class="table table-striped">
     <thead>
         <tr>
@@ -37,3 +52,4 @@
         }
     </tbody>
 </table>
+*/ -->

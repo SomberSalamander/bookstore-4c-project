@@ -1,0 +1,21 @@
+Table Books {
+  BooksId integer [primary key]
+  Title string
+  Author string
+  Publisher string
+  Description string
+  Price float
+  Stock integer
+  PublishedAt datetime
+  Language string/enum
+  NumberOfPages int
+  Rating float
+}
+
+Table Users {
+  UserId integer [primary key]
+  Name string
+  Email string
+  PasswordHash string
+  CreatedAt datetime
+}

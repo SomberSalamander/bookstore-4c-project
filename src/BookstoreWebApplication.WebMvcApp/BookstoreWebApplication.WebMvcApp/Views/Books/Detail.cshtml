@@ -1,10 +1,18 @@
 ﻿@model Book
 
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">@Model.Title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">by @Model.Author</h6>
+<div class="m-2 d-flex flex-row">
+    <div>
+        <img src="#" alt="Alternate Text" style="width: 100%;"/>
+    </div>
+    <div class="mx-4">
+        <h2 class="card-title">@Model.Title</h2>
+        <h5 class="card-subtitle mb-2 text-muted">by @Model.Author</h5>
         <p class="card-text">@Model.Description</p>
-        <a asp-controller="Books" asp-action="List" class="btn btn-primary">Back to list</a>
+        <a asp-controller="Books" asp-action="" class="btn btn-primary">Add to cart</a>
     </div>
 </div>
+
+<br />
+<br />
+
+<a asp-controller="Books" asp-action="List" class="btn btn-primary">Back to list</a>
