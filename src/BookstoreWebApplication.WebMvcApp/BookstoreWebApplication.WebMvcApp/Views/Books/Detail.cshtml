@@ -8,7 +8,13 @@
         <h2 class="card-title">@Model.Title</h2>
         <h5 class="card-subtitle mb-2 text-muted">by @Model.Author</h5>
         <p class="card-text">@Model.Description</p>
-        <a asp-controller="Books" asp-action="List" class="btn btn-primary ">Add to cart</a>
+        @if (Model.Stock < 1)
+        {
+            <p class="text-danger-emphasis">Not in Stock</p>   
+        } else
+        {
+            <a asp-controller="Books" asp-action="List" class="btn btn-primary">Add to cart</a>
+        }
     </div>
 </div>
 

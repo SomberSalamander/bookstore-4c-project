@@ -12,7 +12,6 @@ Table Books {
   PublishedAt datetime
   Language string
   NumberOfPages int
-  Rating float
 }
 
 Table Users {

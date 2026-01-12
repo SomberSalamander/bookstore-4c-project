@@ -49,6 +49,8 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         [Column("rating")]
         public float Rating { get; set; }
 
+        //public string Img { get; set; }
+
         public Book()
         {
         }
