@@ -7,28 +7,27 @@ Table Books {
   Author string
   Publisher string
   Description string
-  Price float
+  Price decimal
   Stock integer
-  PublishedAt datetime
   Language string
-  NumberOfPages int
+  NumberOfPages integer
 }
 
 Table Users {
   UserId integer [primary key]
   Name string
-  Email string
-  Password string
-  CreatedAt datetime
+  Email string [note: "unique"]
+  PasswordHash string
 }
 
 Table Carts {
   CartId integer [primary key]
-  UserId integer
+  UserId integer [note: "unique"]
   CreatedAt datetime
 }
 
 Table CartItems {
+  CartItemId integer [primary key]
   CartId integer
   BookId integer
   Quantity integer
@@ -38,4 +37,4 @@ Ref: Carts.CartId < CartItems.CartId
 
 Ref: Books.BookId < CartItems.BookId
 
-Ref: Carts.UserId < Users.UserId
+Ref: Carts.UserId - Users.UserId
