@@ -4,22 +4,37 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="m-3 text-center">Knihy</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/stylesheet.css" />
+</head>
+<body>
+    <h1 class="m-3 text-center">Knihy</h1>
 
-<div class="d-grid row">
-    @foreach (Book book in Model)
-    {
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="text-decoration-none">
-                <img src="#" alt="Alternate Text" />
-                    <h5 class="card-title text-black my-3 mb-4">@book.Title <span class="text-muted card-subtitle ">by @book.Author</span></h5>
-                <div class="d-flex flex-row justify-content-end">
-                    <h4 class="text-success"> @book.Price CZK</h4>
+    <div class="d-grid row">
+        @foreach (Book book in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="text-decoration-none">
+                        <img src="#" alt="Alternate Text" />
+                        <h5 class="card-title text-black my-3 mb-4">@book.Title <span class="text-muted card-subtitle ">by @book.Author</span></h5>
+                        <div class="d-flex flex-row justify-content-end">
+                            <h4 class="text-success"> @book.Price CZK</h4>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-    </div>
-    }
+            </div>
+        }
 
-</div>
+    </div>
+
+</body>

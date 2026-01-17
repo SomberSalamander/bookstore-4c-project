@@ -1,24 +1,41 @@
 ﻿@model Book
 
-<div class="m-2 d-flex flex-row">
-    <div>
-        <img src="#" alt="Alternate Text" style="width: 100%;"/>
-    </div>
-    <div class="mx-4">
-        <h2 class="card-title">@Model.Title</h2>
-        <h5 class="card-subtitle mb-2 text-muted">by @Model.Author</h5>
-        <p class="card-text">@Model.Description</p>
-        @if (Model.Stock < 1)
-        {
-            <p class="text-danger-emphasis">Not in Stock</p>   
-        } else
-        {
-            <a asp-controller="Books" asp-action="List" class="btn btn-primary">Add to cart</a>
-        }
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/stylesheet.css" />
+</head>
+<body>
 
-<br />
-<br />
+    <div class="m-2 d-flex flex-row">
+        <div>
+            <img src="#" alt="Alternate Text" style="width: 100%;" />
+        </div>
+        <div class="mx-4">
+            <h2 class="card-title">@Model.Title</h2>
+            <h5 class="card-subtitle mb-2 text-muted">by @Model.Author</h5>
+            <p class="card-text">@Model.Description</p>
+            @if (Model.Stock < 1)
+            {
+                <p class="text-danger-emphasis">Not in Stock</p>
+            }
+            else
+            {
+                <a asp-controller="Books" asp-action="List" class="btn btn-primary">Add to cart</a>
+            }
+        </div>
+    </div>
 
-<a asp-controller="Books" asp-action="List" class="btn btn-secondary">Back to list</a>
+    <br />
+    <br />
+
+    <a asp-controller="Books" asp-action="List" class="btn btn-secondary">Back to list</a>
+
+</body>
