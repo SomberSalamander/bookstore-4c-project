@@ -2,29 +2,61 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
+    <!DOCTYPE html>
+    <html lang="en">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
-    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/css/stylesheet.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/stylesheet.css" />
 </head>
 <body>
-    <h1 class="m-3 text-center">Knihy</h1>
+    <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
+
+    <div class="banner-title">
+        <span class="title text-accent">
+            Book e-shop
+        </span>
+        <span class="imgs">
+            <img class="user-icon" src="~/img/userIcon.png" alt="User" />
+            <img class ="cart-icon" src="~/img/cartIcon.png" alt="Cart" />
+        </span>
+    </div>
+
+    <div class="main">
+        <div class="grid-container">
+            @foreach (Book book in Model)
+            {
+                <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="text-decoration-none">
+                    <div class="grid-cell">
+                        <img class="b-img" src="~/img/books/@book.Img" alt="@book.Title" />
+                        <div class="b-title text-accent">@book.Title</div>
+                        <div class="b-author text-accent">@book.Author</div>
+                        <div class="cell-row">
+                            <div class="b-price">@book.Price Kc</div>
+                            <div class="b-stock">Skladem @book.Stock ks</div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+
+    </div>
+
+
+
 
     <div class="d-grid row">
         @foreach (Book book in Model)
         {
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="text-decoration-none">
                         <img src="#" alt="Alternate Text" />
                         <h5 class="card-title text-black my-3 mb-4">@book.Title <span class="text-muted card-subtitle ">by @book.Author</span></h5>
                         <div class="d-flex flex-row justify-content-end">
