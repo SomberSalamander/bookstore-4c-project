@@ -29,33 +29,15 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         
         [Column("stock")]
         public int Stock { get; set; }
-        
-        [Column("publishedAt")]
-        public DateTime PublishedAt { get; set; }
-        
-        [Column("cover")]
-        public string Cover { get; set; }
-        
-        [Column("language")]
-        public string Language { get; set; }
-        
-        [Column("isbn")]
-        public string ISBN { get; set; }
-        
-        [Column("numberOfPages")]
-        public int NumberOfPages { get; set; }
 
-        // 0 - 5
-        [Column("rating")]
-        public float Rating { get; set; }
-
-        //public string Img { get; set; }
+        [Column("img")]
+        public string Img { get; set; }
 
         public Book()
         {
         }
 
-        public Book(int bookId, string title, string author, string publisher, string description, float price, int stock, DateTime publishedAt, string cover, string language, string isbn, int numberOfPages, float rating)
+        public Book(int bookId, string title, string author, string publisher, string description, float price, int stock, string img)
         {
             BookId = bookId;
             Title = title;
@@ -64,12 +46,7 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
             Description = description;
             Price = price;
             Stock = stock;
-            PublishedAt = publishedAt;
-            Cover = cover;
-            Language = language;
-            ISBN = isbn;
-            NumberOfPages = numberOfPages;
-            Rating = rating;
+            Img = img;
         }
     }
 }

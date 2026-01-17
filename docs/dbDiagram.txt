@@ -9,8 +9,7 @@ Table Books {
   Description string
   Price decimal
   Stock integer
-  Language string
-  NumberOfPages integer
+  Img string
 }
 
 Table Users {
