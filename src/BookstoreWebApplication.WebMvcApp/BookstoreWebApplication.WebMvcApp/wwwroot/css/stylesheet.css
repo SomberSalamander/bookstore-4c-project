@@ -79,7 +79,6 @@ body {
 }
 
 .grid-cell {
-    height: 80px;
     border: 1px solid #bdbdbd;
     border-radius: 8px;
     height: 300px;

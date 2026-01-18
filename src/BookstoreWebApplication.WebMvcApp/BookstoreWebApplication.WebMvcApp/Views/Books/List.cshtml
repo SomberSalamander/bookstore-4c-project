@@ -46,27 +46,5 @@
                 </a>
             }
         </div>
-
     </div>
-
-
-
-
-    <div class="d-grid row">
-        @foreach (Book book in Model)
-        {
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                        <img src="#" alt="Alternate Text" />
-                        <h5 class="card-title text-black my-3 mb-4">@book.Title <span class="text-muted card-subtitle ">by @book.Author</span></h5>
-                        <div class="d-flex flex-row justify-content-end">
-                            <h4 class="text-success"> @book.Price CZK</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        }
-
-    </div>
-
 </body>
