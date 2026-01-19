@@ -68,6 +68,8 @@ body {
 
 .main {
     margin: 0 128px 0 128px;
+    display: flex;
+    justify-content: center;
 }
 
 .cart-icon {
@@ -78,16 +80,27 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: max-content;
     column-gap: 28px;
     row-gap: 16px;
-    justify-content: center;
+    align-items: center;
     min-width: min-content;
-    max-width: 1200px;
+    max-width: fit-content;
 }
 
 .grid-cell {
-    height: max-content;
-    min-width: max-content;
+    min-height: max-content;
+    height: 100%;
+    min-width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-cell a {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
 }
 
 .b-img {
@@ -140,14 +153,20 @@ body {
     margin: 0;
     justify-content: space-between;
     gap: 16px;
+    justify-self: end;
 }
 
 #btnToCart {
-    width: 72px;
+    width: 80px;
+    min-height: min-content;
+    height: 
     font-family: 'Finlandica';
     font-style: normal;
     font-weight: 500;
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 16px;
+    line-height: 18px;
     color: white;
+    display: flex;
+    justify-content: center;
+    justify-self: end;
 }
