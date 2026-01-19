@@ -42,10 +42,10 @@
                         </div>
                         <div class="cell-row">
                             <div>
-                                <div class="b-price">@book.Price Kc</div>
+                                <div class="b-price">@book.Price Kč</div>
                                 @if (book.Stock < 1)
                                 {
-                                    <div class="b-stock text-danger">Neni skladem</div>
+                                    <div class="b-stock text-danger">Není skladem</div>
                                 } else
                                 {
                                     <div class="b-stock">Skladem @book.Stock ks</div>
