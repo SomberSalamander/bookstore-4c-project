@@ -181,3 +181,19 @@ body {
 .img-container {
     height: 100%;
 }
+
+
+
+
+
+
+
+// -----------Login/Register view-----------
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+

@@ -9,8 +9,6 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         [Key]
         [Column("userId")]
         public int UserId { get; set; }
-        [Column("name")]
-        public string Name { get; set; }
         [Column("email")]
         public string Email { get; set; }
         [Column("passwordHash")]
@@ -20,10 +18,9 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         {
         }
 
-        public User(int userId, string name, string email, string passwordHash)
+        public User(int userId, string email, string passwordHash)
         {
             UserId = userId;
-            Name = name;
             Email = email;
             PasswordHash = passwordHash;
         }
