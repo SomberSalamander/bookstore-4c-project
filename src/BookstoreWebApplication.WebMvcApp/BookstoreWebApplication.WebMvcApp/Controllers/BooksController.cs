@@ -31,6 +31,17 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
         }
 
         [HttpGet]
+        public IActionResult Login()
+        {
+            return View(Books);
+        }
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View(Books);
+        }
+
+        [HttpGet]
         public IActionResult Cart()
         {
             return View();

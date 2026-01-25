@@ -17,13 +17,31 @@
     <link rel="stylesheet" href="~/css/stylesheet.css" />
 </head>
 <body>
-    <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
+    <header class="banner-project background-accent">
+        <span class="title">
+            Book e-shop
+        </span>
+        <span>
+            BookstoreWebApplication.WebMvcApp
+        </span>
+    </header>
 
     <div class="bg-container">
-        
-        <div class="account-box">
+        <div class="acc-box">
+            <h2 class="title text-accent">Register</h2>
+            <input type="email" name="" value="" placeholder="Email" />
+            <input type="password" name="" value="" placeholder="Password" />
+            <p>
+                Have an existing account?
+                <a class="text-accent" asp-area="" asp-controller="Books" asp-action="Login">
+                    Login!
+                </a>
+            </p>
 
+            <a asp-controller="Books" asp-action="List" class="background-accent btn btn-success">Create account</a>
         </div>
-
     </div>
+
+    <footer class="banner-project background-accent">
+    </footer>
 </body>
