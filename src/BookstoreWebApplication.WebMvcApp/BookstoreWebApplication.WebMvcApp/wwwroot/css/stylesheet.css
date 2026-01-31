@@ -17,17 +17,18 @@ body {
 
 .background-accent {
     background-color: #1F4D3A;
+    color: white;
 }
 
 .banner-project {
     color: white;
-    padding: 12px 64px 12px 64px;
+    padding: 8px 64px 8px 64px;
     width: 100%;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     display: flex;
-    min-height: 64px;
+    min-height: max-content;
     max-height: 72px;
     justify-content: space-between;
     align-items: center;
@@ -72,8 +73,9 @@ body {
 }
 
 .main {
-    margin: 0 128px 0 128px;
+    margin: 0 256px 0 256px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -90,15 +92,15 @@ body {
     row-gap: 16px;
     align-items: center;
     min-width: fit-content;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 .grid-cell {
     min-height: max-content;
     height: 100%;
     min-width: 200px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto min-content min-content;
 }
 
 .grid-cell a {
@@ -109,7 +111,7 @@ body {
 }
 
 .b-img {
-    height: 280px;
+    height: 100%;
     width: 100%;
     border: solid 1px grey;
     border-radius: 8px;
@@ -158,10 +160,10 @@ body {
     margin: 0;
     justify-content: space-between;
     gap: 16px;
-    justify-self: end;
+    align-self: end;
 }
 
-#btnToCart {
+.btnToCart {
     max-width: max-content;
     height: max-content;
     padding: 12px 16px 12px 16px;
@@ -173,34 +175,105 @@ body {
     color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
     align-self: flex-end;
 }
 
 /*-----------Detail view-----------*/
 
-.img-container {
-    height: 80px;
-    width: auto;
+.detail-container {
+    min-height: 256px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 3fr 2fr;
+    gap: 32px;
 }
 
-.img-container {
-    height: 100%;
+.b-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
 }
 
+.detail-container img {
+    max-height: 700px;
+    width: 100%;
+    max-width: 800px;
+    border: solid 2px grey;
+    border-radius: 8px;
+    object-fit: contain;
+    background-color: black;
+    display: flex;
+    justify-self: right;
+}
 
+.detail-container .b-title {
+    font-size: 32px;
+    margin: 32px 0 12px 0;
+}
 
+.detail-container .b-author {
+    font-size: 24px;
+    text-decoration: none;
+    margin: 0 0 16px 0;
+}
 
+.b-desc {
+    margin-bottom: 64px;
+}
 
+.details-row {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.detail-container .b-price {
+    display: flex;
+    align-items: end;
+    font-size: 32px;
+}
+
+.stock-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-container .b-stock {
+    font-size: 18px;
+    text-align: center;
+    margin: 0;
+}
+
+.detail-container .btnToCart {
+    font-size: 20px;
+    line-height: 1em;
+    min-width: 128px;
+    min-height: 64px;
+}
+
+.btnBackToList {
+    align-self: flex-start;
+    margin: 64px 0 24px 0;
+}
 
 
 /*-----------Login/Register view-----------*/
+
+.fullscreen-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    overflow-y: hidden;
+}
 
 .bg-container {
     background-image: url("../img/bookcase-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    min-height: 900px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -216,7 +289,7 @@ body {
     padding: 42px 56px 42px 56px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .acc-box h2 {
@@ -227,36 +300,43 @@ body {
 .acc-box input, .acc-box .btn {
     padding: 8px 8px 8px 16px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: 'Finlandica';
     font-size: 1em;
     font-weight: 500;
     line-height: 2em;
-    color: rgba(0, 0, 0, 0.5);
+    height: 64px;
 }
 
 .acc-box input {
+    font-size: 20px;
     background: rgba(217, 217, 217, 0.5);
     border: 2px solid rgba(0, 0, 0, 0.2);
+    min-height: max-content;
+}
+
+.acc-box input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .acc-box .btn {
     background: #1F4D3A;
     color: white;
-    font-family: 'Finlandica';
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 34px;
-    text-align: center;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .acc-box p {
     font-family: 'Finlandica';
     font-style: normal;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 18px;
     color: rgba(0,0,0, .7);
 }
 

@@ -18,37 +18,46 @@
     <link rel="stylesheet" href="~/css/stylesheet.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="img-container">
+    <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
+
+    <header class="banner-title">
+        <span class="title text-accent">
+            Book e-shop
+        </span>
+        <span class="imgs">
+            <img class="user-icon" src="~/img/userIcon.png" alt="User" />
+            <img class="cart-icon" src="~/img/cartIcon.png" alt="Cart" />
+        </span>
+    </header>
+
+    <div class="main">
+
+        <div class="detail-container">
             <img src="~/img/books/@Model.Img" alt="@Model.Title" />
+            <div class="b-details">
+                <h2 class="b-title" >@Model.Title</h2>
+                <h5 class="b-author text-muted">by @Model.Author</h5>
+                <p class="b-desc">@Model.Description</p>
+                <div class="details-row">
+                    <div class="b-price">@Model.Price CZK</div>
+                    <div class="stock-container">
+                        @if (Model.Stock < 1)
+                        {
+                            <p class="b-stock text-danger">Not in Stock</p>
+                        }
+                        else
+                        {
+                            <p class="b-stock text-success">@Model.Stock in stock</p>
+                            <a asp-controller="Books" asp-action="List" class="btnToCart btn btn-success">Add to cart</a>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
 
-
+        <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
     </div>
 
-
-    <div class="m-2 d-flex flex-row">
-        <div>
-            <img src="#" alt="Alternate Text" style="width: 100%;" />
-        </div>
-        <div class="mx-4">
-            <h2 class="card-title">@Model.Title</h2>
-            <h5 class="card-subtitle mb-2 text-muted">by @Model.Author</h5>
-            <p class="card-text">@Model.Description</p>
-            @if (Model.Stock < 1)
-            {
-                <p class="text-danger-emphasis">Not in Stock</p>
-            }
-            else
-            {
-                <a asp-controller="Books" asp-action="List" class="btn btn-primary">Add to cart</a>
-            }
-        </div>
-    </div>
-
-    <br />
-    <br />
-
-    <a asp-controller="Books" asp-action="List" class="btn btn-secondary">Back to list</a>
-
+    <footer class="background-accent banner-project">
+    </footer>
 </body>

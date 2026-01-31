@@ -19,7 +19,7 @@
 <body>
     <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
 
-    <div class="banner-title">
+    <header class="banner-title">
         <span class="title text-accent">
             Book e-shop
         </span>
@@ -27,7 +27,7 @@
             <img class="user-icon" src="~/img/userIcon.png" alt="User" />
             <img class ="cart-icon" src="~/img/cartIcon.png" alt="Cart" />
         </span>
-    </div>
+    </header>
 
     <div class="main">
         <div class="grid-container">
@@ -42,16 +42,16 @@
                         </div>
                         <div class="cell-row">
                             <div>
-                                <div class="b-price">@book.Price Kč</div>
+                                <div class="b-price">@book.Price CZK</div>
                                 @if (book.Stock < 1)
                                 {
-                                    <div class="b-stock text-danger">Není skladem</div>
+                                    <div class="b-stock text-danger btn-outline-danger disabled">Not in stock</div>
                                 } else
                                 {
-                                    <div class="b-stock">Skladem @book.Stock ks</div>
+                                    <div class="b-stock">@book.Stock in stock</div>
                                 }
                             </div>
-                            <a id="btnToCart" class="btn btn-success"> <!--adds to user's cart, doesn't redirect-->
+                            <a class="btnToCart btn btn-success"> <!--adds to user's cart, doesn't redirect-->
                                 Add to cart
                             </a>
                         </div>
