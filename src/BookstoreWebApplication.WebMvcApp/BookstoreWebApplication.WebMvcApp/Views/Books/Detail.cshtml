@@ -16,14 +16,15 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/stylesheet.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
 
     <header class="banner-title">
-        <span class="title text-accent">
+        <a asp-controller="Books" asp-action="List" class="title text-accent">
             Book e-shop
-        </span>
+        </a>
         <span class="imgs">
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +32,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="Register">Register</a></li>
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="SignIn">Sign in</a></li>
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="Login">Login</a></li>
                 </ul>
             </div>
 
