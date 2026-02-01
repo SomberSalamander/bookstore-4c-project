@@ -25,7 +25,16 @@
             Book e-shop
         </span>
         <span class="imgs">
-            <img class="user-icon" src="~/img/userIcon.png" alt="User" />
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="user-icon" src="~/img/userIcon.png" alt="User" />
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="Register">Register</a></li>
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="SignIn">Sign in</a></li>
+                </ul>
+            </div>
+
             <img class="cart-icon" src="~/img/cartIcon.png" alt="Cart" />
         </span>
     </header>

@@ -42,7 +42,7 @@ body {
     width: 100%;
     border: 1px solid grey;
     box-shadow: 0px 4px 13px 2px rgba(0, 0, 0, 0.25);
-    padding: 16px 64px 8px 64px;
+    padding: 16px 128px 8px 128px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 100px;
@@ -73,7 +73,7 @@ body {
 }
 
 .main {
-    margin: 0 256px 0 256px;
+    margin: 0 15% 0 15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,17 +88,16 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: max-content;
-    column-gap: 28px;
-    row-gap: 16px;
-    align-items: center;
-    min-width: fit-content;
-    max-width: 1000px;
+    column-gap: 16px;
+    row-gap: 20px;
+    min-width: min-content;
+    max-width: 1200px;
 }
 
 .grid-cell {
     min-height: max-content;
     height: 100%;
-    min-width: 200px;
+    min-width: fit-content;
     display: grid;
     grid-template-rows: auto min-content min-content;
 }
@@ -138,6 +137,7 @@ body {
 }
 
 .b-price {
+    width: max-content;
     color: #2F2F2F;
     font-family: 'Finlandica';
     font-style: normal;
@@ -147,6 +147,7 @@ body {
 }
 
 .b-stock {
+    width: max-content;
     color: #5A5A5A;
     font-family: 'Finlandica';
     font-style: normal;
