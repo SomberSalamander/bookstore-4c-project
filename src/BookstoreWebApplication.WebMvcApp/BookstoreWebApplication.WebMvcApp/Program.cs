@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace BookstoreWebApplication.WebMvcApp
 {
     public class Program
@@ -8,6 +10,22 @@ namespace BookstoreWebApplication.WebMvcApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //1. cast - konfigurace Cookies
+            builder.Services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    // odkaz na kontroler (jejich akce)
+                    options.LoginPath = "/Books/Login";
+                    //options.LogoutPath = "/Books/Logout";
+                    //options.AccessDeniedPath = "/Books/Denied";
+
+                    options.Cookie.HttpOnly = true;
+                    //v odkud musi byt cookie; jestli funguje napric domene/strance/...
+                    options.Cookie.SameSite = SameSiteMode.Lax;
+                });
+
 
             var app = builder.Build();
 
@@ -22,7 +40,11 @@ namespace BookstoreWebApplication.WebMvcApp
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseAuthorization();
+            // 2. cast - Zapnuti autentizace
+            //  ! DULEZITE PORADI ! - nejdriv se autentizuje, pak autorizuje
+            app.UseAuthentication(); // Kdo jsme
+            app.UseAuthorization(); // Cim jsme (jake role mame)
+
 
             app.MapStaticAssets();
             app.MapControllerRoute(

@@ -1,4 +1,4 @@
-﻿@model List<Book>
+﻿@model LoginViewModel
 
 @{
     ViewData["Title"] = "Login";
@@ -30,8 +30,8 @@
         <div class="bg-container">
             <div class="acc-box">
                 <h2 class="title text-accent">Login</h2>
-                <input type="email" name="" value="" placeholder="Email" />
-                <input type="password" name="" value="" placeholder="Password" />
+                <input type="email" asp-for="Email" placeholder="Email" />
+                <input type="password" asp-for="Password" placeholder="Password" />
                 <p>
                     Don't have an existing account?
                     <a class="text-accent" asp-area="" asp-controller="Books" asp-action="Register">

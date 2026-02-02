@@ -7,6 +7,8 @@ namespace BookstoreWebApplication.WebMvcApp.Data
     public class BooksDbContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
