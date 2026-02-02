@@ -306,12 +306,11 @@ body {
     font-family: 'Finlandica';
     font-size: 1em;
     font-weight: 500;
-    line-height: 2em;
+    line-height: 1.5em;
     height: 64px;
 }
 
 .acc-box input {
-    font-size: 20px;
     background: rgba(217, 217, 217, 0.5);
     border: 2px solid rgba(0, 0, 0, 0.2);
     min-height: max-content;
