@@ -30,8 +30,8 @@
                     <img class="user-icon" src="~/img/userIcon.png" alt="User" />
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="Register">Register</a></li>
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="Login">Login</a></li>
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Register">Register</a></li>
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Login">Login</a></li>
                 </ul>
             </div>
 
@@ -63,7 +63,8 @@
                                     <div class="b-stock">@book.Stock in stock</div>
                                 }
                             </div>
-                            <a class="btnToCart btn btn-success"> <!--adds to user's cart, doesn't redirect-->
+                            <a class="btnToCart btn btn-success"> 
+                                <!--adds to user's cart, redirects?-->
                                 Add to cart
                             </a>
                         </div>

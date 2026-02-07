@@ -1,4 +1,4 @@
-﻿@model LoginViewModel
+﻿@model BookstoreWebApplication.WebMvcApp.Models.Auth.LoginViewModel
 
 @{
     ViewData["Title"] = "Register";
@@ -28,7 +28,7 @@
         </header>
 
         <div class="bg-container">
-            <div class="acc-box">
+            <form class="acc-box">
                 <h2 class="title text-accent">Register</h2>
                 <input type="email" asp-for="Email" placeholder="Email" />
                 <input type="password" asp-for="Password" placeholder="Password" />
@@ -39,8 +39,8 @@
                     </a>
                 </p>
 
-                <a asp-controller="Books" asp-action="List" class="background-accent btn btn-success">Create account</a>
-            </div>
+                <button class="background-accent btn btn-success">Login</button>
+            </form>
         </div>
 
         <footer class="background-accent banner-footer">

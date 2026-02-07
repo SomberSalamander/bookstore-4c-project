@@ -12,17 +12,17 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         [Column("email")]
         public string Email { get; set; }
         [Column("passwordHash")]
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
 
         public User()
         {
         }
 
-        public User(int userId, string email, string passwordHash)
+        public User(int userId, string email, string password)
         {
             UserId = userId;
             Email = email;
-            PasswordHash = passwordHash;
+            Password = password;
         }
     }
 }

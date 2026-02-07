@@ -1,4 +1,4 @@
-namespace BookstoreWebApplication.WebMvcApp.Models
+namespace BookstoreWebApplication.WebMvcApp.Models.Auth
 {
     public class LoginViewModel
     {

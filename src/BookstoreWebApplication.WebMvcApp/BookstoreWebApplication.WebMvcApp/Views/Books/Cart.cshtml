@@ -1,4 +1,5 @@
-﻿@model List<Book>
+﻿@model BookstoreWebApplication.WebMvcApp.Models.Books.CartViewModel
+
 
 @{
     ViewData["Title"] = "List";
@@ -27,6 +28,30 @@
     </header>
 
     <div class="main">
+        <h1>@Model.User.UserId) @Model.User.Email's cart</h1>
+        <p>Cart ID: @Model.Cart.CartId</p>
+        
+        <table class="table-light table-striped">
+            <thead>
+                <tr>
+                    <th>Book name</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr>
+                        <td>@item.Book.Title</td>
+                        <td>@item.Book.Author</td>
+                        <td>@item.Book.Price CZK</td>
+                        <td>@item.CartItem.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
 
     </div>
