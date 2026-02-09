@@ -78,6 +78,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
         public IActionResult Register(LoginViewModel model)
         {
             // TODO: vytvorit noveho uzivatele a pridat do DB
+            // okopirovat z predchozich projektu => kde?
             return View();
         }
     }

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="~/css/stylesheet.css" />
 </head>
 <body>
+    <div class="fullscreen-container">
+
     <header class="banner-project background-accent">
         <a asp-controller="Books" asp-action="List" class="title text-white">
             Book e-shop
@@ -18,9 +20,8 @@
             BookstoreWebApplication.WebMvcApp
         </span>
     </header>
-    <main role="main" class="fullscreen-container">
-        @RenderBody()
-    </main>
+
+    @RenderBody()
 
     <footer class="footer background-accent banner-footer">
     </footer>
@@ -28,5 +29,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    </div>
 </body>
 </html>

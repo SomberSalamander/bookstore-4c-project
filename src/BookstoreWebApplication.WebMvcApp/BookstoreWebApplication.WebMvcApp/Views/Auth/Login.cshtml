@@ -5,20 +5,17 @@
     Layout = "_AuthLayout";
 }
 
-<main>
-    <div class="fullscreen-container bg-container">
-            <form class="acc-box" method="post">
-                <h2 class="title text-accent">Login</h2>
-                <input type="email" asp-for="Email" placeholder="Email" />
-                <input type="password" asp-for="Password" placeholder="Password" />
-                <p>
-                    Don't have an existing account?
-                    <a class="text-accent" asp-area="" asp-controller="Auth" asp-action="Register">
-                        Register now!
-                    </a>
-                </p>
-
-                <button class="background-accent btn btn-primary">Login</button>
-            </form>
-    </div>
+<main class="fullscreen-container bg-container">
+    <form class="acc-box" method="post">
+        <h2 class="title text-accent">Login</h2>
+        <input type="email" asp-for="Email" placeholder="Email" />
+        <input type="password" asp-for="Password" placeholder="Password" />
+        <p>
+            Don't have an existing account?
+            <a class="text-accent" asp-area="" asp-controller="Auth" asp-action="Register">
+                Register now!
+            </a>
+        </p>
+        <button class="background-accent btn btn-primary">Login</button>
+    </form>
 </main>
