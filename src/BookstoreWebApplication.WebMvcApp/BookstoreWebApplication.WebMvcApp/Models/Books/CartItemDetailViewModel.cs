@@ -6,5 +6,6 @@ namespace BookstoreWebApplication.WebMvcApp.Models.Books
     {
         public CartItem CartItem { get; set; }
         public Book Book { get; set; }
+        public float BooksPrice { get; set; }
     }
 }

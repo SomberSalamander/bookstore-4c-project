@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/stylesheet.css" />
+</head>
+<body>
+    <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
+    <header class="banner-title">
+        <span class="title text-accent">
+            Book e-shop
+        </span>
+        <span class="imgs">
+            <div class="dropdown">
+                <a class="dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="user-icon" src="~/img/userIcon.png" alt="User" />
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Register">Register</a></li>
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Login">Login</a></li>
+                </ul>
+            </div>
+
+            <a asp-area="" asp-controller="Books" asp-action="Cart">
+                <img class="cart-icon" src="~/img/cartIcon.png" alt="Cart" />
+            </a>
+        </span>
+    </header>
+    <div class="fullscreen-container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="mt-5 background-accent banner-project">
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

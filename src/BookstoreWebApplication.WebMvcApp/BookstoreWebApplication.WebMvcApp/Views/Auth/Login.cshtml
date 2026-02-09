@@ -2,48 +2,23 @@
 
 @{
     ViewData["Title"] = "Login";
-    Layout = null;
+    Layout = "_AuthLayout";
 }
 
-<head>
-    <!DOCTYPE html>
-    <html lang="en">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/stylesheet.css" />
-</head>
-<body>
-    <div class="fullscreen-container">
-        <header class="banner-project background-accent">
-            <a asp-controller="Books" asp-action="List" class="title text-white">
-                Book e-shop
-            </a>
-            <span>
-                BookstoreWebApplication.WebMvcApp
-            </span>
-        </header>
-
-        <div class="bg-container">
+<main>
+    <div class="fullscreen-container bg-container">
             <form class="acc-box" method="post">
                 <h2 class="title text-accent">Login</h2>
-                <input asp-for="Email" placeholder="Email" />
-                <input asp-for="Password" placeholder="Password" />
+                <input type="email" asp-for="Email" placeholder="Email" />
+                <input type="password" asp-for="Password" placeholder="Password" />
                 <p>
                     Don't have an existing account?
-                    <a class="text-accent" asp-area="" asp-controller="Books" asp-action="Register">
+                    <a class="text-accent" asp-area="" asp-controller="Auth" asp-action="Register">
                         Register now!
                     </a>
                 </p>
 
                 <button class="background-accent btn btn-primary">Login</button>
             </form>
-        </div>
-
-        <footer class="background-accent banner-footer">
-        </footer>
     </div>
-</body>
+</main>

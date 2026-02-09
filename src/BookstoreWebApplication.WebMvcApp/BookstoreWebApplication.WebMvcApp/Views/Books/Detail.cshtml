@@ -2,46 +2,10 @@
 
 @{
     ViewData["Title"] = "Detail";
-    Layout = null;
+    Layout = "_BooksLayout";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/stylesheet.css" />
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
-
-    <header class="banner-title">
-        <a asp-controller="Books" asp-action="List" class="title text-accent">
-            Book e-shop
-        </a>
-        <span class="imgs">
-            <div class="dropdown">
-                <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="user-icon" src="~/img/userIcon.png" alt="User" />
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="Register">Register</a></li>
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Books" asp-action="Login">Login</a></li>
-                </ul>
-            </div>
-
-            <img class="cart-icon" src="~/img/cartIcon.png" alt="Cart" />
-        </span>
-    </header>
-
-    <div class="main">
-
+<main class="main">
         <div class="detail-container">
             <img src="~/img/books/@Model.Img" alt="@Model.Title" />
             <div class="b-details">
@@ -58,16 +22,12 @@
                         else
                         {
                             <p class="b-stock text-success">@Model.Stock in stock</p>
-                            <a asp-controller="Books" asp-action="List" class="btnToCart btn btn-success">Add to cart</a>
+                            <a asp-controller="Books" asp-action="Cart" class="btnToCart btn btn-success">Add to cart</a>
                         }
                     </div>
                 </div>
             </div>
         </div>
 
-        <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
-    </div>
-
-    <footer class="background-accent banner-project">
-    </footer>
-</body>
+        <a asp-controller="Books" asp-action="List" class="btnBackToList btn background-accent">Back to list</a>
+</main>

@@ -2,48 +2,21 @@
 
 @{
     ViewData["Title"] = "Register";
-    Layout = null;
+    Layout = "_AuthLayout";
 }
 
-<head>
-    <!DOCTYPE html>
-    <html lang="en">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/stylesheet.css" />
-</head>
-<body>
-    <div class="fullscreen-container">
-        <header class="banner-project background-accent">
-            <a asp-controller="Books" asp-action="List" class="title text-white">
-                Book e-shop
-            </a>
-            <span>
-                BookstoreWebApplication.WebMvcApp
-            </span>
-        </header>
-
-        <div class="bg-container">
+<main class ="fullscreen-container bg-container">
             <form class="acc-box">
                 <h2 class="title text-accent">Register</h2>
                 <input type="email" asp-for="Email" placeholder="Email" />
                 <input type="password" asp-for="Password" placeholder="Password" />
                 <p>
                     Have an existing account?
-                    <a class="text-accent" asp-area="" asp-controller="Books" asp-action="Login">
+                    <a class="text-accent" asp-area="" asp-controller="Auth" asp-action="Login">
                         Login!
                     </a>
                 </p>
 
                 <button class="background-accent btn btn-success">Login</button>
             </form>
-        </div>
-
-        <footer class="background-accent banner-footer">
-        </footer>
-    </div>
-</body>
+</main>

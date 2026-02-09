@@ -3,59 +3,47 @@
 
 @{
     ViewData["Title"] = "List";
-    Layout = null;
+    Layout = "_BooksLayout";
 }
 
-<head>
-    <!DOCTYPE html>
-    <html lang="en">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/stylesheet.css" />
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
-
-    <header class="banner-title">
-        <span class="title text-accent">
-            Book e-shop
-        </span>
-    </header>
-
-    <div class="main">
+<main class="main">
         <h1>@Model.User.UserId) @Model.User.Email's cart</h1>
         <p>Cart ID: @Model.Cart.CartId</p>
         
-        <table class="table-light table-striped">
+        <table class="table-light table table-borderless">
             <thead>
                 <tr>
                     <th>Book name</th>
                     <th>Author</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Total price</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="c-tbody">
                 @foreach (var item in Model.CartItems)
                 {
                     <tr>
                         <td>@item.Book.Title</td>
                         <td>@item.Book.Author</td>
                         <td>@item.Book.Price CZK</td>
-                        <td>@item.CartItem.Quantity</td>
+                        <td>
+                            <input class="" type="number" name="quantity" value="@item.CartItem.Quantity" />
+                        </td>
+                        <td>@item.Book.Price*@item.CartItem.Quantity CZK</td>
                     </tr>
                 }
             </tbody>
+            <tfoot class="">
+                <tr>
+                    <td>Total price: @Model.TotalPrice</td>
+                    <td>TOTAL</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
         </table>
 
-
-    </div>
-
-    <footer class="mt-5 background-accent banner-project">
-    </footer>
-</body>
+        <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
+</main>
