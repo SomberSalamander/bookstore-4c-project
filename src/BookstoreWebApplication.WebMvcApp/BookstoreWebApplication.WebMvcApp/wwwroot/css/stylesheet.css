@@ -239,6 +239,8 @@ body {
 .stock-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 4px;
 }
 
@@ -354,3 +356,9 @@ body {
 .c-tbody {
     
 }
+
+.c-tbody td {
+    display: table-cell;
+    align-items: center;
+}
+

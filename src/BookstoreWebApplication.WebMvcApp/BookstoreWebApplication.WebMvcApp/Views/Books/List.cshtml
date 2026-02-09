@@ -28,8 +28,7 @@
                                     <div class="b-stock">@book.Stock in stock</div>
                                 }
                             </div>
-                            <a asp-controller="Books" asp-action="Cart" class="btnToCart btn btn-success">
-                                <!--adds to user's cart, redirects?-->
+                            <a asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@book.BookId" class="btn btn-success btnToCart text-decoration-none">
                                 Add to cart
                             </a>
                         </div>

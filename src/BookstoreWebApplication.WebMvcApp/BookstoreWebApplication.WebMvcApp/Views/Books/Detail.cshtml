@@ -22,12 +22,14 @@
                         else
                         {
                             <p class="b-stock text-success">@Model.Stock in stock</p>
-                            <a asp-controller="Books" asp-action="Cart" class="btnToCart btn btn-success">Add to cart</a>
+                            <a asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@Model.BookId" class="btn btn-success btnToCart text-decoration-none">
+                                Add to cart
+                            </a>
                         }
                     </div>
                 </div>
             </div>
         </div>
 
-        <a asp-controller="Books" asp-action="List" class="btnBackToList btn background-accent">Back to list</a>
+        <a asp-controller="Books" asp-action="List" class="btnBackToList btn background-accent btnToCart">Back to list</a>
 </main>

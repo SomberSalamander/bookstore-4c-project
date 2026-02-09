@@ -10,7 +10,7 @@
         <h1>@Model.User.UserId) @Model.User.Email's cart</h1>
         <p>Cart ID: @Model.Cart.CartId</p>
         
-        <table class="table-light table table-borderless">
+        <table class="table table-borderless table-light">
             <thead>
                 <tr>
                     <th>Book name</th>
@@ -18,6 +18,7 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total price</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody class="c-tbody">
@@ -27,17 +28,26 @@
                         <td>@item.Book.Title</td>
                         <td>@item.Book.Author</td>
                         <td>@item.Book.Price CZK</td>
+                        <td>@(item.Book.Price*item.CartItem.Quantity) CZK</td>
                         <td>
-                            <input class="" type="number" name="quantity" value="@item.CartItem.Quantity" />
+                            <form asp-controller="Books" asp-action="UpdateCartItemQuantity" onchange="this.form.submit()" method="post" style="display:inline;">
+                                <input type="hidden" name="cartItemId" value="@item.CartItem.CartItemId" />
+                                <input class="form-control" type="number" name="quantity" value="@item.CartItem.Quantity" min="1" max="@item.Book.Stock" onchange="this.form.submit()" />
+                            </form>
                         </td>
-                        <td>@item.Book.Price*@item.CartItem.Quantity CZK</td>
+                        <td>
+                            <a asp-controller="Books" asp-action="RemoveFromCart" asp-route-cartItemId="@item.CartItem.CartItemId" class="btn btn-danger btnToCart text-decoration-none">
+                                Remove
+                            </a>
+                        </td>
                     </tr>
                 }
             </tbody>
             <tfoot class="">
                 <tr>
                     <td>Total price: @Model.TotalPrice</td>
-                    <td>TOTAL</td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

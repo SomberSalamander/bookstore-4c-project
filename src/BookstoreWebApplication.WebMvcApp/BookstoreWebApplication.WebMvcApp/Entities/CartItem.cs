@@ -20,9 +20,8 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         {
         }
 
-        public CartItem(int cartItemId, int cartId, int bookId, int quantity)
+        public CartItem(int cartId, int bookId, int quantity)
         {
-            CartItemId = cartItemId;
             CartId = cartId;
             BookId = bookId;
             Quantity = quantity;

@@ -73,5 +73,47 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
 
             return View(viewModel);
         }
+
+        [HttpGet]
+        public IActionResult RemoveFromCart(int cartItemId)
+        {
+            var cartItem = DbContext.CartItems.Find(cartItemId);
+            if (cartItem != null)
+            {
+                DbContext.CartItems.Remove(cartItem);
+                DbContext.SaveChanges();
+            }
+            return RedirectToAction("Cart");
+        }
+
+        [HttpGet]
+        public IActionResult AddToCart(int bookId)
+        {
+            var userId = User.FindFirstValue("id");
+            if (userId == null) return Unauthorized();
+            var user = DbContext.Users.FirstOrDefault(u => u.UserId == Convert.ToInt32(userId));
+            if (user == null) return NotFound("User not found.");
+            var cart = DbContext.Carts.FirstOrDefault(c => c.UserId == Convert.ToInt32(userId));
+            if (cart == null) return NotFound("Cart not found.");
+            int cartId = cart.CartId;
+            CartItem cartItem = new CartItem(cartId, bookId, 1);
+            DbContext.CartItems.Add(cartItem);
+            DbContext.SaveChanges();
+
+            return RedirectToAction("Cart");
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCartItemQuantity(int cartItemId, int quantity)
+        {
+            var cartItem = DbContext.CartItems.FirstOrDefault(ci => ci.CartItemId == cartItemId);
+            if (cartItem != null && quantity > 0)
+            {
+                cartItem.Quantity = quantity;
+                DbContext.SaveChanges();
+            }
+
+            return RedirectToAction("Cart");
+        }
     }
 }
