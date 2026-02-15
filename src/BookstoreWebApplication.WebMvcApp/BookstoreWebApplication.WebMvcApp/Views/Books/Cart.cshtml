@@ -30,8 +30,7 @@
                         <td>@item.Book.Price CZK</td>
                         <td>@(item.Book.Price*item.CartItem.Quantity) CZK</td>
                         <td>
-                            <form asp-controller="Books" asp-action="UpdateCartItemQuantity" onchange="this.form.submit()" method="post" style="display:inline;">
-                                <input type="hidden" name="cartItemId" value="@item.CartItem.CartItemId" />
+                            <form asp-controller="Books" asp-action="UpdateCartItemQuantity" asp-route-cartItemId="@item.CartItem.CartItemId" onchange="this.form.submit()" method="post" style="display:inline;">
                                 <input class="form-control" type="number" name="quantity" value="@item.CartItem.Quantity" min="1" max="@item.Book.Stock" onchange="this.form.submit()" />
                             </form>
                         </td>

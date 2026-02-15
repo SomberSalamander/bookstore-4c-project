@@ -81,5 +81,12 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             // okopirovat z predchozich projektu => kde?
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
     }
 }

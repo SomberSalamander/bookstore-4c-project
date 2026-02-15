@@ -18,11 +18,18 @@
         <span class="imgs">
             <div class="dropdown">
                 <a class="dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="user-icon" src="~/img/userIcon.png" alt="User" />
+                    <img class="user-icon" src="~/img/userIcon.png" alt="@User.FindFirst("email").Value" />
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Register">Register</a></li>
-                    <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Login">Login</a></li>
+                    @if (User?.Identity != null && !User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Register">Register</a></li>
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Login">Login</a></li>
+                    }
+                    else
+                    {
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                    }
                 </ul>
             </div>
 
