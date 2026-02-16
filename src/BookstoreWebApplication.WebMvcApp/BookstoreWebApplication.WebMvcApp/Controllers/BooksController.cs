@@ -96,8 +96,19 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             var cart = DbContext.Carts.FirstOrDefault(c => c.UserId == Convert.ToInt32(userId));
             if (cart == null) return NotFound("Cart not found.");
             int cartId = cart.CartId;
-            CartItem cartItem = new CartItem(cartId, bookId, 1);
-            DbContext.CartItems.Add(cartItem);
+
+            var existingCartItem = DbContext.CartItems.FirstOrDefault(ci => ci.CartId == cartId && ci.BookId == bookId);
+
+            if (existingCartItem != null)
+            {
+                existingCartItem.Quantity++;
+            }
+            else
+            {
+                CartItem cartItem = new CartItem(cartId, bookId, 1);
+                DbContext.CartItems.Add(cartItem);
+            }
+
             DbContext.SaveChanges();
 
             return RedirectToAction("Cart");

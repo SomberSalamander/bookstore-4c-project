@@ -28,9 +28,17 @@
                                     <div class="b-stock">@book.Stock in stock</div>
                                 }
                             </div>
-                            <a asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@book.BookId" class="btn btn-success btnToCart text-decoration-none">
-                                Add to cart
-                            </a>
+                            @if (book.Stock < 1)
+                            {
+                                <a role="button" aria-disabled="true" class="disabled btn btn-secondary btnToCart text-decoration-none">
+                                    Add to cart
+                                </a>
+                            } else
+                            {
+                                <a role="button" asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@book.BookId" class="btn btn-success btnToCart text-decoration-none">
+                                    Add to cart
+                                </a>
+                            }
                         </div>
                     </a>
                 </div>

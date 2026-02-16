@@ -8,20 +8,20 @@
 
 <main class="main">
         <h1>@Model.User.UserId) @Model.User.Email's cart</h1>
-        <p>Cart ID: @Model.Cart.CartId</p>
+        <p>Created: @Model.Cart.CreatedAt</p>
         
-        <table class="table table-borderless table-light">
-            <thead>
+        <table class="table table-hover align-middle">
+            <thead class="table-success">
                 <tr>
-                    <th>Book name</th>
-                    <th>Author</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total price</th>
-                    <th>Action</th>
+                    <th class="col">Book name</th>
+                    <th class="col">Author</th>
+                    <th class="col">Price</th>
+                    <th class="col">Quantity</th>
+                    <th class="col">Total price</th>
+                    <th class="col">Action</th>
                 </tr>
             </thead>
-            <tbody class="c-tbody">
+            <tbody class="c-tbody table-group-divider">
                 @foreach (var item in Model.CartItems)
                 {
                     <tr>
@@ -30,7 +30,11 @@
                         <td>@item.Book.Price CZK</td>
                         <td>@(item.Book.Price*item.CartItem.Quantity) CZK</td>
                         <td>
-                            <form asp-controller="Books" asp-action="UpdateCartItemQuantity" asp-route-cartItemId="@item.CartItem.CartItemId" onchange="this.form.submit()" method="post" style="display:inline;">
+                            <!--<form asp-controller="Books" asp-action="UpdateCartItemQuantity" asp-route-cartItemId="@item.CartItem.CartItemId" onchange="this.form.submit()" method="post" style="display:inline;">
+                        <input class="form-control" type="number" name="quantity" value="@item.CartItem.Quantity" min="1" max="@item.Book.Stock" onchange="this.form.submit()" />
+                            -->
+                            <form asp-controller="Books" asp-action="UpdateCartItemQuantity" onchange="this.form.submit()" method="post" style="display:inline;">
+                                <input type="hidden" name="cartItemId" value="@item.CartItem.CartItemId" />
                                 <input class="form-control" type="number" name="quantity" value="@item.CartItem.Quantity" min="1" max="@item.Book.Stock" onchange="this.form.submit()" />
                             </form>
                         </td>
@@ -42,9 +46,9 @@
                     </tr>
                 }
             </tbody>
-            <tfoot class="">
+            <tfoot>
                 <tr>
-                    <td>Total price: @Model.TotalPrice</td>
+                    <td class="fw-semibold fs-4">Total price: @Model.CartItems.Sum(item => item.Book.Price * item.CartItem.Quantity) CZK</td>
                     <td></td>
                     <td></td>
                     <td></td>

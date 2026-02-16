@@ -6,17 +6,16 @@
 }
 
 <main class="fullscreen-container bg-container">
-            <form class="acc-box">
-                <h2 class="title text-accent">Register</h2>
-                <input type="email" asp-for="Email" placeholder="Email" />
-                <input type="password" asp-for="Password" placeholder="Password" />
-                <p>
-                    Have an existing account?
-                    <a class="text-accent" asp-area="" asp-controller="Auth" asp-action="Login">
-                        Login!
-                    </a>
-                </p>
-
-                <button class="background-accent btn btn-success">Create account</button>
-            </form>
+    <form class="acc-box" method="post">
+        <h2 class="title text-accent">Register</h2>
+        <input type="email" asp-for="Email" placeholder="Email" />
+        <input type="password" asp-for="Password" placeholder="Password" />
+        <p>
+            Have an existing account?
+            <a class="text-accent" asp-area="" asp-controller="Auth" asp-action="Login">
+                Login!
+            </a>
+        </p>
+        <button class="background-accent btn btn-success">Create account</button>
+    </form>
 </main>

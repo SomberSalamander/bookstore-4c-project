@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="~/css/stylesheet.css" />
 </head>
 <body>
-    <div class="banner-project background-accent">BookstoreWebApplication.WebMvcApp</div>
+    <div class="banner-project background-accent">
+        BookstoreWebApplication.WebMvcApp - Welcome @User.FindFirst("email").Value
+    </div>
     <header class="banner-title">
         <span class="title text-accent">
             Book e-shop

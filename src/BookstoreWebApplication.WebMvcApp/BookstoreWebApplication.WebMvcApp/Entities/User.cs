@@ -18,9 +18,8 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         {
         }
 
-        public User(int userId, string email, string password)
+        public User(string email, string password)
         {
-            UserId = userId;
             Email = email;
             Password = password;
         }

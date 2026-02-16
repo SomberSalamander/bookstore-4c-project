@@ -18,11 +18,10 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         {
         }
 
-        public Cart(int cartId, int userId, DateTime createdAt)
+        public Cart(int userId)
         {
-            CartId = cartId;
             UserId = userId;
-            CreatedAt = createdAt;
+            CreatedAt = DateTime.Now;
         }
     }
 }

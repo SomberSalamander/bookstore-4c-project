@@ -21,10 +21,25 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             DbContext = new BooksDbContext();
         }
 
-        [HttpGet]
-        public IActionResult Test()
+        
+        private async Task SignInUser(User user)
         {
-            return Json(DbContext.Users.ToList());
+            //2. Sestavit "identitu/totoznost" uzivatele pomoci Claims
+            List<Claim> claims = new List<Claim>();
+
+            Claim idClaim = new Claim("id", user.UserId.ToString());
+            Claim emailClaim = new Claim("email", user.Email);
+
+            claims.Add(idClaim);
+            claims.Add(emailClaim);
+
+            // "prasacky jen "Cookie" "
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+            // na asynchronni se musi cekat
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
         }
 
         [HttpGet]
@@ -48,21 +63,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             }
 
             //2. Sestavit "identitu/totoznost" uzivatele pomoci Claims
-            List<Claim> claims = new List<Claim>();
-
-            Claim idClaim = new Claim("id", user.UserId.ToString());
-            Claim emailClaim = new Claim("email", user.Email);
-
-            claims.Add(idClaim);
-            claims.Add(emailClaim);
-
-            // "prasacky jen "Cookie" "
-            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-            // na asynchronni se musi cekat
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            await SignInUser(user);
 
             return RedirectToAction("Cart", "Books");
         }
@@ -75,11 +76,30 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(LoginViewModel model)
+        public async Task<IActionResult> Register(LoginViewModel model)
         {
-            // TODO: vytvorit noveho uzivatele a pridat do DB
-            // okopirovat z predchozich projektu => kde?
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (DbContext.Users.Any(u => u.Email == model.Email))
+            {
+                ModelState.AddModelError("Email", "Email already exists");
+                return View(model);
+            }
+
+            User newUser = new User(model.Email, model.Password);
+            DbContext.Users.Add(newUser);
+            DbContext.SaveChanges();
+
+            Cart newCart = new Cart(newUser.UserId);
+            DbContext.Carts.Add(newCart);
+            DbContext.SaveChanges();
+
+            await SignInUser(newUser);
+
+            return RedirectToAction("Cart", "Books");
         }
 
         [HttpGet]
