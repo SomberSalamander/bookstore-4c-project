@@ -37,9 +37,8 @@ namespace BookstoreWebApplication.WebMvcApp.Entities
         {
         }
 
-        public Book(int bookId, string title, string author, string publisher, string description, float price, int stock, string img)
+        public Book(string title, string author, string publisher, string description, float price, int stock, string img)
         {
-            BookId = bookId;
             Title = title;
             Author = author;
             Publisher = publisher;

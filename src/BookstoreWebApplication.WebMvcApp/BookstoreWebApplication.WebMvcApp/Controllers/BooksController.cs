@@ -29,6 +29,62 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             Carts = DbContext.Carts.ToList();
         }
 
+        // test admin redirect
+        [HttpGet]
+        public IActionResult AdminList()
+        {
+            return View(Books);
+        }
+
+        [HttpGet]
+        public IActionResult DeleteBook(int bookId)
+        {
+            var book = DbContext.Books.Find(bookId);
+            if (book != null)
+            {
+                DbContext.Books.Remove(book);
+                DbContext.SaveChanges();
+            }
+
+            return RedirectToAction("AdminList");
+        }
+
+        [HttpGet]
+        public IActionResult AddBook(int bookId)
+        {
+            Book book = new Book();
+            DbContext.Books.Add(book);
+
+            //DbContext.SaveChanges();
+
+            return PartialView("BookForm", new Book());
+            //return RedirectToAction("AdminList");
+        }
+
+        [HttpPost]
+        public IActionResult EditBook(int bookId)
+        {
+            var book = DbContext.Books.FirstOrDefault(b => b.BookId == bookId);
+            if (book != null)
+            {
+                // book.Title = title; //other attributes author, publisher, description, price, stock, img path...
+                DbContext.SaveChanges();
+            }
+            // ^^^ presunout do BookForm
+            // "jak udelat, aby 3 jina tlacitka zobrazili dialog/formular, ale podle toho jake tlacitko se spustilo by delalo jine veci? ie. Add new book - vytvori novou knihu, Edit - nacte data vybrane knihy a po potvrzeni tato data prepise"
+
+            return PartialView("BookForm", book);
+        }
+
+        [HttpGet]
+        public IActionResult BookForm(Book book)
+        {
+            // TODO: otevrit dialogove okno nebo novy view, ktery pozna, jaka CUD operace to je a podle toho se chova
+
+            return View("AdminList");
+        }
+        // 
+
         [HttpGet]
         public IActionResult List()
         {
