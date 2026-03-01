@@ -135,6 +135,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             return View(Books);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult DeleteBook(int bookId)
         {
@@ -148,6 +149,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             return RedirectToAction("AdminList");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult AdminBook(bool isEdited, int bookId)
         {
@@ -164,6 +166,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AdminBook(AdminBookModel adminBookModel)
         {

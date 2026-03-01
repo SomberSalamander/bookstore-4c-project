@@ -18,6 +18,11 @@
             Book e-shop
         </span>
         <span class="imgs">
+            @if (User?.Identity != null && User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <span class="badge rounded-pill text-bg-secondary">Admin</span>
+            }
+
             <div class="dropdown">
                 <a class="dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="user-icon" src="~/img/userIcon.png" alt="@User.FindFirst("email").Value" />
@@ -44,7 +49,7 @@
         @RenderBody()
     </main>
     
-    <footer class="mt-5 background-accent banner-project">
+    <footer class="mt-5 background-accent banner-project fixed-bottom">
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

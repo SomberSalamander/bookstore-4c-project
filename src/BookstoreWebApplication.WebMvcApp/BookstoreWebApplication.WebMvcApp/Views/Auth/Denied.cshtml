@@ -1,0 +1,16 @@
+﻿@model User;
+
+
+@{
+    ViewData["Title"] = "Access denied";
+    Layout = "_BooksLayout";
+}
+
+<main class="main flex-fill">
+    <h1>Admin menu</h1>
+        
+    <h2 class="text-muted text-center">- Access Denied -</h2>
+
+    <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
+
+</main>

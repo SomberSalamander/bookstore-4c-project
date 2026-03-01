@@ -18,8 +18,9 @@ namespace BookstoreWebApplication.WebMvcApp
                 {
                     // odkaz na kontroler (jejich akce)
                     options.LoginPath = "/Auth/Login";
+                    options.AccessDeniedPath = "/Auth/Login";
                     //options.LogoutPath = "/Auth/Logout";
-                    //options.AccessDeniedPath = "/Auth/Denied";
+                    options.AccessDeniedPath = "/Auth/Denied";
 
                     options.Cookie.HttpOnly = true;
                     //v odkud musi byt cookie; jestli funguje napric domene/strance/...

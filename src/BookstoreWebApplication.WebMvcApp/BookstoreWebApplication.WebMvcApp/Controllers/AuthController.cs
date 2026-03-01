@@ -29,9 +29,11 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
 
             Claim idClaim = new Claim("id", user.UserId.ToString());
             Claim emailClaim = new Claim("email", user.Email);
+            Claim roleClaim = new Claim(ClaimTypes.Role, user.Role);
 
             claims.Add(idClaim);
             claims.Add(emailClaim);
+            claims.Add(roleClaim);
 
             // "prasacky jen "Cookie" "
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -89,7 +91,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
                 return View(model);
             }
 
-            User newUser = new User(model.Email, model.Password);
+            User newUser = new User(model.Email, model.Password, "User");
             DbContext.Users.Add(newUser);
             DbContext.SaveChanges();
 
@@ -107,6 +109,11 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
+        }
+
+        public IActionResult Denied() 
+        {
+            return View(); 
         }
     }
 }
