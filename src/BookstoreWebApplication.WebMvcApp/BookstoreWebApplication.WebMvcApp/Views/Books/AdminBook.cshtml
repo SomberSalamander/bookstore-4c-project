@@ -1,0 +1,88 @@
+﻿@model BookstoreWebApplication.WebMvcApp.Models.Books.AdminBookModel
+
+
+@{
+    ViewData["Title"] = "Admin list";
+    Layout = "_BooksLayout";
+}
+
+<main class="main">
+    <h1>Admin menu</h1>
+
+    <div class="container mt-4">
+        @if (Model.IsEdited)
+        {
+            <h3>Book form - Edit</h3>
+        }
+        else
+        {
+            <h3>Book form - Add new book</h3>
+        }
+
+        <form method="post" class="p-3 border rounded bg-light">
+            @if (Model.IsEdited) {
+                <div class="form-group" hidden>
+                    <label class="col-form-label">Id:</label>
+                    <input type="number" class="form-control disabled" asp-for="Book.BookId"  />
+                </div>
+            }
+            
+            <div class="form-group">
+                <label class="col-form-label">Title:</label>
+                <input type="text" class="form-control" asp-for="Book.Title" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Author:</label>
+                <input type="text" class="form-control" asp-for="Book.Author" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Publisher:</label>
+                <input type="text" class="form-control" asp-for="Book.Publisher" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Description:</label>
+                <textarea class="form-control" asp-for="Book.Description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Price:</label>
+                <input type="number" class="form-control" asp-for="Book.Price" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Stock:</label>
+                <input type="number" class="form-control" asp-for="Book.Stock" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Image path:</label>
+                <input type="text" class="form-control" asp-for="Book.Img" />
+            </div>
+
+            <div class="mt-3">
+                @if (Model.IsEdited)
+                {
+                    <button class="btnToCart btn background-accent">
+                        Save changes
+                    </button>
+                }
+                else {
+                    <button class="btnToCart btn background-accent">
+                        Add new book
+                    </button>
+                }
+
+                <button class="btnBackToList btnToCart btn btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+
+</main>
+<script>
+
+</script>

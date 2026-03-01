@@ -363,3 +363,10 @@ body {
     align-items: center;
 }
 
+
+/*-----------Admin-----------*/
+
+.admin-btn {
+    max-width: 100%;
+    margin-bottom: 4px;
+}

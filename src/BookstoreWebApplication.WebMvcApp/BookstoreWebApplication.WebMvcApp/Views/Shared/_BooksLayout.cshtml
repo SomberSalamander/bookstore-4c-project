@@ -23,8 +23,7 @@
                     <img class="user-icon" src="~/img/userIcon.png" alt="@User.FindFirst("email").Value" />
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <!-- for some fucking reason this doesnt work anymore, fix later
-                        /*TADY PAK PRIDAT ZAVINAC if (User?.Identity == null && !User.Identity.IsAuthenticated)
+                    @if (User?.Identity == null && !User.Identity.IsAuthenticated)
                     {
                         <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Register">Register</a></li>
                         <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Login">Login</a></li>
@@ -33,8 +32,6 @@
                     {
                         <li><a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a></li>
                     }
-                    */
-                    -->
                 </ul>
             </div>
 

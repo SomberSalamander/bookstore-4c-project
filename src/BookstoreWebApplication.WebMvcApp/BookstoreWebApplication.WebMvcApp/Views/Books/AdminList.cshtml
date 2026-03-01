@@ -7,63 +7,64 @@
 }
 
 <main class="main">
-        <h1>Admin menu</h1>
+    <h1>Admin menu</h1>
         
-        <table class="table table-hover align-middle">
-            <thead class="table-success">
+    <table class="table table-hover align-middle">
+        <thead class="table-success">
+            <tr>
+                <th class="col">Id</th>
+                <th class="col">Title</th>
+                <th class="col">Author</th>
+                <th class="col">Publisher</th>
+                <th class="col">Description</th>
+                <th class="col">Price</th>
+                <th class="col">Stock</th>
+                <th class="col">Img path</th>
+                <th class="col">Action</th>
+            </tr>
+        </thead>
+        <tbody class="c-tbody table-group-divider">
+            @foreach (var book in Model)
+            {
                 <tr>
-                    <th class="col">Id</th>
-                    <th class="col">Title</th>
-                    <th class="col">Author</th>
-                    <th class="col">Publisher</th>
-                    <th class="col">Description</th>
-                    <th class="col">Price</th>
-                    <th class="col">Stock</th>
-                    <th class="col">Img path</th>
-                    <th class="col">Action</th>
-                </tr>
-            </thead>
-            <tbody class="c-tbody table-group-divider">
-                @foreach (var book in Model)
-                {
-                    <tr>
-                        <td>@book.BookId</td>
-                        <td>@book.Title</td>
-                        <td>@book.Author</td>
-                        <td>@book.Publisher</td>
-                        <td>@book.Description</td>
-                        <td>@book.Price CZK</td>
-                        <td>@book.Stock</td>
-                        <td>@book.Img path</td>
-                        <td>
-                            <a asp-controller="Books" asp-action="EditBook" asp-route-bookId="@book.BookId" class="btn btn-info btnToCart text-decoration-none">
-                                Edit
-                            </a>
-                            <a asp-controller="Books" asp-action="DeleteBook" asp-route-bookId="@book.BookId" class="btn btn-danger btnToCart text-decoration-none">
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>@book.BookId</td>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Publisher</td>
+                    <td>@book.Description</td>
+                    <td>@book.Price CZK</td>
+                    <td>@book.Stock</td>
+                    <td>@book.Img</td>
                     <td>
-                        <a asp-controller="Books" asp-action="AddBook" class="btn btn-success btnToCart text-decoration-none">
-                            Add new book
+                        <a asp-controller="Books" asp-action="AdminBook" asp-route-bookId="@book.BookId" asp-route-isEdited="@true" class="btn btn-primary btnToCart text-decoration-none admin-btn">
+                            Edit
+                        </a>
+                        <a asp-controller="Books" asp-action="DeleteBook" asp-route-bookId="@book.BookId" class="btn btn-danger btnToCart btnToCart text-decoration-none admin-btn">
+                            Delete
                         </a>
                     </td>
                 </tr>
-            </tfoot>
-        </table>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a asp-controller="Books" asp-action="AdminBook" asp-route-isEdited="@false" class="btn btn-success btnToCart text-decoration-none admin-btn">
+                        Add new book
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
 
-        <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
+    <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
+
 </main>

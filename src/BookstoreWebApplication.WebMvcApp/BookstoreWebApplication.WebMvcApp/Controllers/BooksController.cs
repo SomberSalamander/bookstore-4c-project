@@ -29,61 +29,6 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             Carts = DbContext.Carts.ToList();
         }
 
-        // test admin redirect
-        [HttpGet]
-        public IActionResult AdminList()
-        {
-            return View(Books);
-        }
-
-        [HttpGet]
-        public IActionResult DeleteBook(int bookId)
-        {
-            var book = DbContext.Books.Find(bookId);
-            if (book != null)
-            {
-                DbContext.Books.Remove(book);
-                DbContext.SaveChanges();
-            }
-
-            return RedirectToAction("AdminList");
-        }
-
-        [HttpGet]
-        public IActionResult AddBook(int bookId)
-        {
-            Book book = new Book();
-            DbContext.Books.Add(book);
-
-            //DbContext.SaveChanges();
-
-            return PartialView("BookForm", new Book());
-            //return RedirectToAction("AdminList");
-        }
-
-        [HttpPost]
-        public IActionResult EditBook(int bookId)
-        {
-            var book = DbContext.Books.FirstOrDefault(b => b.BookId == bookId);
-            if (book != null)
-            {
-                // book.Title = title; //other attributes author, publisher, description, price, stock, img path...
-                DbContext.SaveChanges();
-            }
-            // ^^^ presunout do BookForm
-            // "jak udelat, aby 3 jina tlacitka zobrazili dialog/formular, ale podle toho jake tlacitko se spustilo by delalo jine veci? ie. Add new book - vytvori novou knihu, Edit - nacte data vybrane knihy a po potvrzeni tato data prepise"
-
-            return PartialView("BookForm", book);
-        }
-
-        [HttpGet]
-        public IActionResult BookForm(Book book)
-        {
-            // TODO: otevrit dialogove okno nebo novy view, ktery pozna, jaka CUD operace to je a podle toho se chova
-
-            return View("AdminList");
-        }
-        // 
 
         [HttpGet]
         public IActionResult List()
@@ -181,6 +126,78 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             }
 
             return RedirectToAction("Cart");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult AdminList()
+        {
+            return View(Books);
+        }
+
+        [HttpGet]
+        public IActionResult DeleteBook(int bookId)
+        {
+            var book = DbContext.Books.FirstOrDefault(b => b.BookId == bookId);
+            if (book != null)
+            {
+                DbContext.Books.Remove(book);
+                DbContext.SaveChanges();
+            }
+
+            return RedirectToAction("AdminList");
+        }
+
+        [HttpGet]
+        public IActionResult AdminBook(bool isEdited, int bookId)
+        {
+            Book book = DbContext.Books.FirstOrDefault(b => b.BookId == bookId);
+            if (book == null)
+            {
+                book = new Book();
+            }
+
+            AdminBookModel model = new AdminBookModel();
+            model.IsEdited = isEdited;
+            model.Book = book;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AdminBook(AdminBookModel adminBookModel)
+        {
+            if (adminBookModel.IsEdited)
+            {
+                var book = DbContext.Books.FirstOrDefault(b => b.BookId == adminBookModel.Book.BookId);
+                if (book != null)
+                {
+                    book.Title = adminBookModel.Book.Title;
+                    book.Author = adminBookModel.Book.Author;
+                    book.Publisher = adminBookModel.Book.Publisher;
+                    book.Description = adminBookModel.Book.Description;
+                    book.Price = adminBookModel.Book.Price;
+                    book.Stock = adminBookModel.Book.Stock;
+                    book.Img = adminBookModel.Book.Img;
+                    DbContext.SaveChanges();
+                }
+            }
+            else
+            {
+                Book newBook = new Book(
+                    adminBookModel.Book.Title,
+                    adminBookModel.Book.Author,
+                    adminBookModel.Book.Publisher,
+                    adminBookModel.Book.Description,
+                    adminBookModel.Book.Price,
+                    adminBookModel.Book.Stock,
+                    adminBookModel.Book.Img
+                );
+                DbContext.Books.Add(newBook);
+                DbContext.SaveChanges();
+            }
+
+            return RedirectToAction("AdminList", Books);
         }
     }
 }

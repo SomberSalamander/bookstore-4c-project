@@ -28,10 +28,10 @@
                         <td>@item.Book.Title</td>
                         <td>@item.Book.Author</td>
                         <td>@item.Book.Price CZK</td>
-                        <td>@(item.Book.Price*item.CartItem.Quantity) CZK</td>
+                        <td>@(item.Book.Price * item.CartItem.Quantity) CZK</td>
                         <td>
                             <form asp-controller="Books" asp-action="UpdateCartItemQuantity" asp-route-cartItemId="@item.CartItem.CartItemId" onchange="this.form.submit()" method="post" style="display:inline;">
-                               <input class="form-control" type="number" name="quantity" value="@item.CartItem.Quantity" min="1" max="@item.Book.Stock" onchange="this.form.submit()" />
+                                <input class="form-control" type="number" name="quantity" value="@item.CartItem.Quantity" min="1" max="@item.Book.Stock" onchange="this.form.submit()" />
                             </form>
                         </td>
                         <td>
