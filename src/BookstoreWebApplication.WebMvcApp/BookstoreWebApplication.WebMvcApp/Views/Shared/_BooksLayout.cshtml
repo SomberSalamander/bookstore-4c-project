@@ -13,18 +13,25 @@
     <div class="banner-project background-accent">
         BookstoreWebApplication.WebMvcApp - Welcome @User.FindFirst("email").Value
     </div>
-    <header class="banner-title">
+    <header class="banner-title mb-5">
         <span class="title text-accent">
             Book e-shop
         </span>
         <span class="imgs">
-            @if (User?.Identity != null && User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-            {
-                <span class="badge rounded-pill text-bg-secondary">Admin</span>
-            }
-
+            <a class="dropdown-item" asp-controller="Books" asp-action="AdminList">
+                @if (User?.Identity != null && User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <span class="badge rounded-pill text-bg-dark">Admin</span>
+                }
+                else if (User?.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <span class="badge rounded-pill text-bg-secondary">User</span>
+                }
+            </a>
+            
             <div class="dropdown">
-                <a class="dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="dropdown-toggle text-decoration-none" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="fs-5 fw-medium text-accent">@User.FindFirst("email").Value  </span>
                     <img class="user-icon" src="~/img/userIcon.png" alt="@User.FindFirst("email").Value" />
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -49,7 +56,7 @@
         @RenderBody()
     </main>
     
-    <footer class="mt-5 background-accent banner-project fixed-bottom">
+    <footer class="background-accent banner-project fixed-bottom">
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

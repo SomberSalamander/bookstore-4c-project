@@ -29,7 +29,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             Carts = DbContext.Carts.ToList();
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult List()
         {
@@ -143,6 +143,14 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             if (book != null)
             {
                 DbContext.Books.Remove(book);
+                // zajistit, ze nenastane chyba existence knihy v Cartu
+                List<CartItem> allCartItems = DbContext.CartItems.Where(ci => ci.BookId == bookId).ToList();
+
+                foreach (var ci in allCartItems)
+                {
+                    DbContext.CartItems.Remove(ci);
+                }
+
                 DbContext.SaveChanges();
             }
 
