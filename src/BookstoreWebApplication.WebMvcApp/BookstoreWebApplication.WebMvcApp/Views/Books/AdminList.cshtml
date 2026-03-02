@@ -7,7 +7,14 @@
 }
 
 <main class="main">
-    <h1>Admin menu</h1>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb font-accent">
+            <li class="breadcrumb-item"><a asp-controller="Books" asp-action="List">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Admin menu</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Admin menu</h1>
         
     <table class="table table-hover align-middle">
         <thead class="table-success">
@@ -36,10 +43,10 @@
                     <td>@book.Stock</td>
                     <td>@book.Img</td>
                     <td>
-                        <a asp-controller="Books" asp-action="AdminBook" asp-route-bookId="@book.BookId" asp-route-isEdited="@true" class="btn btn-primary btnToCart text-decoration-none admin-btn">
+                        <a asp-controller="Books" asp-action="AdminBook" asp-route-bookId="@book.BookId" asp-route-isEdited="@true" class="btn btn-primary btnBooks text-decoration-none admin-btn">
                             Edit
                         </a>
-                        <a asp-controller="Books" asp-action="DeleteBook" asp-route-bookId="@book.BookId" class="btn btn-danger btnToCart btnToCart text-decoration-none admin-btn">
+                        <a asp-controller="Books" asp-action="DeleteBook" asp-route-bookId="@book.BookId" class="btn btn-danger btnBooks btnBooks text-decoration-none admin-btn">
                             Delete
                         </a>
                     </td>
@@ -57,7 +64,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a asp-controller="Books" asp-action="AdminBook" asp-route-isEdited="@false" class="btn btn-success btnToCart text-decoration-none admin-btn">
+                    <a asp-controller="Books" asp-action="AdminBook" asp-route-isEdited="@false" class="btn btn-success btnBooks text-decoration-none admin-btn">
                         Add new book
                     </a>
                 </td>
@@ -65,6 +72,6 @@
         </tfoot>
     </table>
 
-    <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
+    <a asp-controller="Books" asp-action="List" class="btnBackToList btnBooks btn background-accent">Back to list</a>
 
 </main>

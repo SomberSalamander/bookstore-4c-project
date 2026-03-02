@@ -18,10 +18,10 @@
             Book e-shop
         </span>
         <span class="imgs">
-            <a class="dropdown-item" asp-controller="Books" asp-action="AdminList">
+            <a class="dropdown-item pointer-event" asp-controller="Books" asp-action="AdminList">
                 @if (User?.Identity != null && User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <span class="badge rounded-pill text-bg-dark">Admin</span>
+                    <span class="badge rounded-pill text-bg-primary">Admin</span>
                 }
                 else if (User?.Identity != null && User.Identity.IsAuthenticated)
                 {

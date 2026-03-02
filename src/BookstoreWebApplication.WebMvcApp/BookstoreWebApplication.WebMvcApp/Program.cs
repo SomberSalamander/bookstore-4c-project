@@ -50,7 +50,7 @@ namespace BookstoreWebApplication.WebMvcApp
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Books}/{action=List}")
                 .WithStaticAssets();
 
             app.Run();

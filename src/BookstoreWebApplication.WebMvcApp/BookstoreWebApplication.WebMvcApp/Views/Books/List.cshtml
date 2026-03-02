@@ -14,28 +14,28 @@
                     <a asp-controller="Books" asp-action="Detail" asp-route-id="@book.BookId" class="text-decoration-none">
                         <img class="b-img" src="~/img/books/@book.Img" alt="@book.Title" />
                         <div>
-                            <div class="b-title text-accent">@book.Title</div>
-                            <div class="b-author text-accent">@book.Author</div>
+                            <div class="b-title font-accent text-accent">@book.Title</div>
+                            <div class="b-author font-accent text-accent">@book.Author</div>
                         </div>
                         <div class="cell-row">
                             <div>
-                                <div class="b-price">@book.Price CZK</div>
+                                <div class="b-price font-accent">@book.Price CZK</div>
                                 @if (book.Stock < 1)
                                 {
                                     <div class="b-stock text-danger btn-outline-danger disabled">Not in stock</div>
                                 } else
                                 {
-                                    <div class="b-stock">@book.Stock in stock</div>
+                                    <div class="b-stock font-accent">@book.Stock in stock</div>
                                 }
                             </div>
                             @if (book.Stock < 1)
                             {
-                                <a role="button" aria-disabled="true" class="disabled btn btn-secondary btnToCart text-decoration-none">
+                                <a role="button" aria-disabled="true" class="disabled btn btn-secondary btnBooks font-accent text-decoration-none">
                                     Add to cart
                                 </a>
                             } else
                             {
-                                <a role="button" asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@book.BookId" class="btn btn-success btnToCart text-decoration-none">
+                                <a role="button" asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@book.BookId" class="btn btn-success btnBooks font-accent text-decoration-none">
                                     Add to cart
                                 </a>
                             }

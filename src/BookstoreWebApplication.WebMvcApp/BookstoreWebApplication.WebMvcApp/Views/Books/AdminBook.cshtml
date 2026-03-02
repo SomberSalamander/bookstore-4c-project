@@ -7,6 +7,12 @@
 }
 
 <main class="main">
+    <ol class="breadcrumb font-accent">
+        <li class="breadcrumb-item"><a asp-controller="Books" asp-action="List">Home</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Books" asp-action="AdminList">Admin </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Book form</li>
+    </ol>
+
     <h1>Admin menu</h1>
 
     <div class="container mt-4">
@@ -62,22 +68,23 @@
                 <input type="text" class="form-control" asp-for="Book.Img" required />
             </div>
 
-            <div class="mt-3">
+            <div class="mt-3 d-flex gap-1">
+
+                <a asp-controller="Books" asp-action="AdminList" class="mt-3 btnBooks font-accent btn btn-secondary">
+                    Cancel
+                </a>
+
                 @if (Model.IsEdited)
                 {
-                    <button type="submit" class="btnToCart btn background-accent">
+                    <button type="submit" class="btnBooks font-accent btn background-accent">
                         Save changes
                     </button>
                 }
                 else {
-                    <button type="submit" class="btnToCart btn background-accent">
+                    <button type="submit" class="btnBooks font-accent btn background-accent">
                         Add new book
                     </button>
                 }
-
-                <button class="btnBackToList btnToCart btn btn-secondary">
-                    Cancel
-                </button>
             </div>
         </form>
     </div>

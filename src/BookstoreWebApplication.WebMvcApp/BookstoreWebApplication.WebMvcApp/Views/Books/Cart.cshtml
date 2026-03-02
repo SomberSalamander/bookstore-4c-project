@@ -13,7 +13,7 @@
         <table class="table table-hover align-middle">
             <thead class="table-success">
                 <tr>
-                    <th class="col">Book name</th>
+                    <th class="col">Title</th>
                     <th class="col">Author</th>
                     <th class="col">Price</th>
                     <th class="col">Quantity</th>
@@ -35,7 +35,7 @@
                             </form>
                         </td>
                         <td>
-                            <a asp-controller="Books" asp-action="RemoveFromCart" asp-route-cartItemId="@item.CartItem.CartItemId" class="btn btn-danger btnToCart text-decoration-none">
+                            <a asp-controller="Books" asp-action="RemoveFromCart" asp-route-cartItemId="@item.CartItem.CartItemId" class="btn btn-danger btnBooks text-decoration-none">
                                 Remove
                             </a>
                         </td>
@@ -54,5 +54,5 @@
             </tfoot>
         </table>
 
-        <a asp-controller="Books" asp-action="List" class="btnBackToList btnToCart btn background-accent">Back to list</a>
+        <a asp-controller="Books" asp-action="List" class="btnBackToList btnBooks btn background-accent">Back to list</a>
 </main>

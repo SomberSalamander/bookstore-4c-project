@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace BookstoreWebApplication.WebMvcApp.Controllers
 {
-
+    // TODO: make more clear and intuitive buttons up top, make up a flow to present
     public class BooksController : Controller
     {
         public BooksDbContext DbContext { get; set; }
@@ -143,7 +143,6 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             if (book != null)
             {
                 DbContext.Books.Remove(book);
-                // zajistit, ze nenastane chyba existence knihy v Cartu
                 List<CartItem> allCartItems = DbContext.CartItems.Where(ci => ci.BookId == bookId).ToList();
 
                 foreach (var ci in allCartItems)

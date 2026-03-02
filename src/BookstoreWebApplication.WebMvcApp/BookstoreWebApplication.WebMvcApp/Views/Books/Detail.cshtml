@@ -6,30 +6,36 @@
 }
 
 <main class="main">
-        <div class="detail-container">
-            <img src="~/img/books/@Model.Img" alt="@Model.Title" />
-            <div class="b-details">
-                <h2 class="b-title" >@Model.Title</h2>
-                <h5 class="b-author text-muted">by @Model.Author</h5>
-                <p class="b-desc">@Model.Description</p>
-                <div class="details-row">
-                    <div class="b-price">@Model.Price CZK</div>
-                    <div class="stock-container">
-                        @if (Model.Stock < 1)
-                        {
-                            <p class="b-stock text-danger">Not in Stock</p>
-                        }
-                        else
-                        {
-                            <p class="b-stock text-success">@Model.Stock in stock</p>
-                            <a asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@Model.BookId" class="btn btn-success btnToCart text-decoration-none">
-                                Add to cart
-                            </a>
-                        }
-                    </div>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb font-accent">
+            <li class="breadcrumb-item"><a asp-controller="Books" asp-action="List">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+        </ol>
+    </nav>
+    <div class="detail-container">
+        <img src="~/img/books/@Model.Img" alt="@Model.Title" />
+        <div class="b-details">
+            <h2 class="b-title" >@Model.Title</h2>
+            <h5 class="b-author text-muted">by @Model.Author</h5>
+            <p class="b-desc">@Model.Description</p>
+            <div class="details-row">
+                <div class="b-price">@Model.Price CZK</div>
+                <div class="stock-container">
+                    @if (Model.Stock < 1)
+                    {
+                        <p class="b-stock text-danger">Not in Stock</p>
+                    }
+                    else
+                    {
+                        <p class="b-stock text-success">@Model.Stock in stock</p>
+                        <a asp-controller="Books" asp-action="AddToCart" asp-route-bookId="@Model.BookId" class="btn btn-success btnBooks text-decoration-none">
+                            Add to cart
+                        </a>
+                    }
                 </div>
             </div>
         </div>
+    </div>
 
-        <a asp-controller="Books" asp-action="List" class="btnBackToList btn background-accent btnToCart">Back to list</a>
+        <a asp-controller="Books" asp-action="List" class="btnBackToList btn background-accent btnBooks">Back to list</a>
 </main>
