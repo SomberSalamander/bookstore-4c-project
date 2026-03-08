@@ -1,39 +1,38 @@
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
 
-Table Books {
-  BookId integer [primary key]
-  Title string
-  Author string
-  Publisher string
-  Description string
-  Price decimal
-  Stock integer
-  Img string
+Table books {
+  bookId INT [PK]
+  title VARCHAR(50)
+  author VARCHAR(50)
+  publisher VARCHAR(50)
+  description TEXT
+  price FLOAT
+  stock INT
+  img VARCHAR(50)
 }
 
-Table Users {
-  UserId integer [primary key]
-  Name string
-  Email string [note: "unique"]
-  PasswordHash string
+Table users {
+  userId INT [PK]
+  email VARCHAR(50) [UNIQUE]
+  password TEXT
 }
 
-Table Carts {
-  CartId integer [primary key]
-  UserId integer [note: "unique"]
-  CreatedAt datetime
+Table carts {
+  cartId INT [PK]
+  userId INT [UNIQUE]
+  createdAt DATETIME
 }
 
-Table CartItems {
-  CartItemId integer [primary key]
-  CartId integer
-  BookId integer
-  Quantity integer
+Table cartItems {
+  cartItemId INT [PK]
+  cartId INT [note: "FK"]
+  bookId INT [note: "FK"]
+  quantity INT
 }
 
-Ref: Carts.CartId < CartItems.CartId
+Ref: carts.cartId < cartItems.cartId
 
-Ref: Books.BookId < CartItems.BookId
+Ref: books.bookId < cartItems.bookId
 
-Ref: Carts.UserId - Users.UserId
+Ref: carts.userId - users.userId
