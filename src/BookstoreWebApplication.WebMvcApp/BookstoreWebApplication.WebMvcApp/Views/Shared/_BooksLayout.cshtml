@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
+    <title>@ViewData["Title"] - Book e-shop</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="banner-project background-accent">
-        BookstoreWebApplication.WebMvcApp - Welcome @User.FindFirst("email").Value
+        Welcome @User.FindFirst("email").Value
     </div>
     <header class="banner-title mb-5">
-        <span class="title text-accent">
+        <a class="title text-accent" asp-controller="Books" asp-action="List">
             Book e-shop
-        </span>
+        </a>
         <span class="imgs">
             <a class="dropdown-item pointer-event" asp-controller="Books" asp-action="AdminList">
                 @if (User?.Identity != null && User.Identity.IsAuthenticated && User.IsInRole("Admin"))

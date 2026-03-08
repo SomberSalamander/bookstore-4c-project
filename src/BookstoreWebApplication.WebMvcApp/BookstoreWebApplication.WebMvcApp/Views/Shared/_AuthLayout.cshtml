@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookstoreWebApplication.WebMvcApp</title>
+    <title>@ViewData["Title"] - Book e-shop</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/BookstoreWebApplication.WebMvcApp.styles.css" asp-append-version="true" />
@@ -13,12 +13,9 @@
     <div class="fullscreen-container">
 
     <header class="banner-project background-accent">
-        <a class="title text-white">
+        <a class="title text-light" asp-controller="Books" asp-action="List">
             Book e-shop
         </a>
-        <span>
-            BookstoreWebApplication.WebMvcApp
-        </span>
     </header>
 
     @RenderBody()
