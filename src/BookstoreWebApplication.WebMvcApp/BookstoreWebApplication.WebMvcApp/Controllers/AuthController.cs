@@ -24,7 +24,6 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
         
         private async Task SignInUser(User user)
         {
-            //2. Sestavit "identitu/totoznost" uzivatele pomoci Claims
             List<Claim> claims = new List<Claim>();
 
             Claim idClaim = new Claim("id", user.UserId.ToString());
@@ -35,12 +34,10 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             claims.Add(emailClaim);
             claims.Add(roleClaim);
 
-            // "prasacky jen "Cookie" "
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
-            // na asynchronni se musi cekat
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
         }
 

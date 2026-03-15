@@ -1,22 +1,22 @@
 # Projektová dokumentace
 
-## Úvod
+## 1. Úvod
 
 Webová aplikace knihkupectví
 - **Název projektu:** Bookstore / Book e-Shop
 - **Autor:** Barbora Volšická
-- **Datum:** 08.03.2026
-- **Verze:** 1.2
+- **Datum:** 15.03.2026
+- **Verze:** 1.1
 
-### Popis projektu
+### 1.1 Popis projektu
 Cílem projektu je vytvořit webovou aplikaci pro online knihkupectví. Po přihlášení se uživateli zobrazí seznam knih uložených v databázi, které může přidat a odebrat z košíku a upravovat koupené množství knih. Uživatel s rolí administrátora může vytvořit nové záznamy knih, měnit jejich údaje a odstraňovat je z databáze.
 
-### Cíl projektu
+### 1.2 Cíl projektu
 - Poskytnout přehledné uživatelské rozhraní zákazníkovi pro objednávku knih
 - Umožnit správu knih přes webové rozhraní
 - Zajistit průběžné a bezpečené ukládání dat do databáze
 
-### Použité technologie
+### 1.3 Použité technologie
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap
 - **Backend:** C#, ASP.NET Core, Entity Framework Core
 - **Databáze:** MySQL
@@ -27,11 +27,18 @@ Cílem projektu je vytvořit webovou aplikaci pro online knihkupectví. Po přih
 ## 2. Požadavky
 - Autentizace a autorizace uživatele
 - Výskyt 2 další databázových entit (kromě uživatele), které mají mezi sebou vazbu pomocí cizího klíče
-- Zobrazení těchto db. entit (book, cart item) v listu
+- Zobrazení těchto db. entit (book, cartItem) v listu
 - Přidání nových záznamů entit
 - Úprava existujících entit
 - Smazání entit
 - Přehledný design webu
+
+## 2.1 Uživatelské role
+| Role | Popis |
+|------|-------|
+| **Neregistrovaný uživatel** | Může se pouze přihlásit nebo registrovat. Nemůže procházet seznam knih, ani ostatní stránky. |
+| **Registrovaný uživatel (Customer)** | Může přidávat knihy do košíku, upravovat množství a odebírat položky. |
+| **Administrátor** | Může dělat to samé co registrovaný zákazník, zároveň má přístup k administračním stránkám a může provádět CRUD operace s knihami. |
 
 ---
 
@@ -39,7 +46,7 @@ Cílem projektu je vytvořit webovou aplikaci pro online knihkupectví. Po přih
 
 ### 3.1 Tabulky
 
-#### Tabulka: Books
+#### Tabulka: books
 | Sloupec | Datový typ | Popis |
 |-|-|-|
 | bookId | INT (PK, AI)  | Jedinečný identifikátor |
@@ -51,21 +58,21 @@ Cílem projektu je vytvořit webovou aplikaci pro online knihkupectví. Po přih
 | stock | INT | Kusů skladem |
 | img | VARCHAR(50) | Název souboru s obrázkem |
 
-#### Tabulka: Users
+#### Tabulka: users
 | Sloupec | Datový typ | Popis |
 |-|-|-|
 | userId | INT (PK, AI)  | Jedinečný identifikátor |
 | email | VARCHAR(50) | Email uživatele |
 | password | TEXT | Heslo |
 
-#### Tabulka: Carts
+#### Tabulka: carts
 | Sloupec | Datový typ | Popis |
 |-|-|-|
 | cartId | INT (PK, AI)  | Jedinečný identifikátor |
 | userId | INT (FK) | Cizí klíč (uživatel) |
 | createdAt | DATETIME | Datum a čas vytvoření košíku |
 
-#### Tabulka: CartItems
+#### Tabulka: cartItems
 | Sloupec | Datový typ | Popis |
 |-|-|-|
 | cartItemId | INT (PK, AI)  | Jedinečný identifikátor |
@@ -98,6 +105,34 @@ Cílem projektu je vytvořit webovou aplikaci pro online knihkupectví. Po přih
 - Připojení k databázi pomocí Entity Framework Core
 - CRUD operace
 
+## 4.4 Autentizace a autorizace
+
+### Autentizace
+- Probíhá pomocí claimů a **Cookie Autentizace**
+- Po přihlášení se vytvoří cookie s identitou uživatele
+
+### Autorizace
+- Role jsou řešeny pomocí claimů
+- Administrátorské stránky jsou chráněny atributem:
+```csharp
+[Authorize(Roles = "Admin")]
+```
+- (Běžný uživatel nemá přístup do administrační sekce)
+
+---
+
+## 4.5 Detailnější popis logiky aplikace
+
+### Práce s košíkem
+- Každý uživatel má právě jeden aktivní košík
+- Položky košíku jsou ukládány do tabulky *cartItems*
+- Při změně množství se kontroluje zda již kniha v košíku je (jestli ano, tak se pouze zvýší množství o 1 kus), zároveň se nedá zadat hodnota vyšší než je na skladu
+- Při smazání knihy administrátorem se odstraní i její položky v košících
+
+### CRUD operace knih
+- Probíhají přes formulář *AdminBook.cshtml*
+- Obrázek knihy je uložen jako název souboru (obrázek musí být uložen ve složce *\wwwroot\img\books\**)
+
 ---
 
 ## 5. Implementace
@@ -106,20 +141,20 @@ Cílem projektu je vytvořit webovou aplikaci pro online knihkupectví. Po přih
 dle MVC struktury; nejdůležitější složky a soubory:
 
 - **/wwwroot** - obsahují všechny soubory se styly, obrázky apod.
-  - /css, /img, /js, ... 
+  - /css, /img, /js, /lib/bootstrap... 
 - **/Controllers** - všechny kontrolery
   - /AuthController.cs, /BooksController.cs, ...
 - **/Data**
   - /BooksDbContext.cs - spojení s databází
 - **/Entities** - třídy databázových entit
-  - /Book.cs, /User.cs, ...
+  - /Book.cs, /User.cs, /Cart.cs, /CartItem.cs
 - **/Models** - modely rozdělené dle použití
   - /Auth/LoginViewModel.cs
   - /Books/AdminBookModel.cs, /CartItemDetailViewModel.cs, /CartViewModel.cs
-- **/Views** - všechny views, rozdělené dle použití
+- **/Views** - všechny views, rozdělené do těchto složek dle použití:
   - /Auth
   - /Books
-**/Program.cs**
+- **/Program.cs**
 
 ### 5.2 Bezpečnostní opatření
 - Ošetření vstupu při změně množství košíku -> nemůže objednat víc než je na skladu
@@ -129,13 +164,20 @@ dle MVC struktury; nejdůležitější složky a soubory:
 
 ---
 
-## 7. Závěr
+## 6. Závěr
 Projekt splnil svůj účel - umožňuje správu knih přes jednoduché webové rozhraní dle zadání. V tomto projektu jsem si nejen procvičila existující vědomosti, ale i naučila, jak efektivněji a přehledněji programovat mimo jiné. Zjistila jsem, jak pracovat s architekturou MVC, a jak autentizovat a autorizovat uživatele.
 
 ---
 
-## 8. Přílohy
-Všechny přiložené dokumenty najdete ve složce *docs*:
+## 7. Přílohy
+Všechny přiložené dokumenty najdete ve složce */docs*:
 - ER diagram (obrázek, texťák)
-- Wireframy ve Figmě
+- Počáteční Wireframe ve Figmě
 - Původní zadání
+
+## 8. Changelog (verze 1.1)
+
+| Verze | Datum | Popis |
+|-------|--------|--------|
+| **1.0** | 08.03.2026 | Struktura, většina informací dokumentace |
+| **1.1** | 15.03.2026 | Poslední změny - formát, doplnění nedostatků |
