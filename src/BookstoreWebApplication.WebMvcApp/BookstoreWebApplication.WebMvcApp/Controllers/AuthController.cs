@@ -92,7 +92,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             DbContext.Users.Add(newUser);
             DbContext.SaveChanges();
 
-            Cart newCart = new Cart(newUser.UserId);
+            Cart newCart = new Cart(newUser.UserId); 
             DbContext.Carts.Add(newCart);
             DbContext.SaveChanges();
 

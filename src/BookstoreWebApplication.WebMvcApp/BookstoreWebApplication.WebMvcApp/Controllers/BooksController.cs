@@ -12,7 +12,6 @@ using System.Security.Claims;
 
 namespace BookstoreWebApplication.WebMvcApp.Controllers
 {
-    // TODO: make more clear and intuitive buttons up top, make up a flow to present
     public class BooksController : Controller
     {
         public BooksDbContext DbContext { get; set; }
