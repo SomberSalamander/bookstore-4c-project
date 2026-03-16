@@ -64,7 +64,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
             //2. Sestavit "identitu/totoznost" uzivatele pomoci Claims
             await SignInUser(user);
 
-            return RedirectToAction("Cart", "Books");
+            return RedirectToAction("List", "Books");
         }
 
         [HttpGet]
@@ -98,7 +98,7 @@ namespace BookstoreWebApplication.WebMvcApp.Controllers
 
             await SignInUser(newUser);
 
-            return RedirectToAction("Cart", "Books");
+            return RedirectToAction("List", "Books");
         }
 
         [HttpGet]
